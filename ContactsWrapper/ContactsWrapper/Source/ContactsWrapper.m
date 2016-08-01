@@ -31,7 +31,7 @@
 
 @interface ContactsWrapper ()
 
-@property (nonnull) CNContactStore *contactStore;
+@property (nonatomic) CNContactStore *contactStore;
 
 @end
 
