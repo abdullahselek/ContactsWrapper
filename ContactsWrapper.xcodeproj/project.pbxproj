@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C95A9DEF91C5E4FD6386113 /* Pods_ContactsWrapperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9D0174F331D4988C0D983F /* Pods_ContactsWrapperTests.framework */; };
+		37B6866502622B0E88E29F4F /* libPods-ContactsWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1238611A2D5B9BF3B07D6A18 /* libPods-ContactsWrapper.a */; };
 		A484AE581D4FBD0C00ED9305 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE571D4FBD0C00ED9305 /* main.m */; };
 		A484AE5B1D4FBD0C00ED9305 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */; };
 		A484AE5E1D4FBD0C00ED9305 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE5D1D4FBD0C00ED9305 /* ViewController.m */; };
@@ -29,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1238611A2D5B9BF3B07D6A18 /* libPods-ContactsWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ContactsWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25EBA6191C78548C584ACC73 /* Pods-ContactsWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper.release.xcconfig"; sourceTree = "<group>"; };
+		2F9D0174F331D4988C0D983F /* Pods_ContactsWrapperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactsWrapperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		390F2C2D2907318CFF18B955 /* Pods-ContactsWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper.debug.xcconfig"; sourceTree = "<group>"; };
 		A484AE531D4FBD0C00ED9305 /* ContactsWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A484AE571D4FBD0C00ED9305 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A484AE591D4FBD0C00ED9305 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +51,8 @@
 		A484AE7B1D4FBD1E00ED9305 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		A484AE7E1D4FBD4100ED9305 /* ContactsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsWrapper.h; path = Source/ContactsWrapper.h; sourceTree = "<group>"; };
 		A484AE7F1D4FBD4100ED9305 /* ContactsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsWrapper.m; path = Source/ContactsWrapper.m; sourceTree = "<group>"; };
+		F21EEBE81D1BE4B05FBEDC62 /* Pods-ContactsWrapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F97E5DAEDEEA09752BF1D106 /* Pods-ContactsWrapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A484AE7C1D4FBD1E00ED9305 /* Contacts.framework in Frameworks */,
+				37B6866502622B0E88E29F4F /* libPods-ContactsWrapper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +69,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C95A9DEF91C5E4FD6386113 /* Pods_ContactsWrapperTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E340F98BF5B4165AF6EDFC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				390F2C2D2907318CFF18B955 /* Pods-ContactsWrapper.debug.xcconfig */,
+				25EBA6191C78548C584ACC73 /* Pods-ContactsWrapper.release.xcconfig */,
+				F21EEBE81D1BE4B05FBEDC62 /* Pods-ContactsWrapperTests.debug.xcconfig */,
+				F97E5DAEDEEA09752BF1D106 /* Pods-ContactsWrapperTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		976E3C00660575381E55EFF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1238611A2D5B9BF3B07D6A18 /* libPods-ContactsWrapper.a */,
+				2F9D0174F331D4988C0D983F /* Pods_ContactsWrapperTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A484AE4A1D4FBD0C00ED9305 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +103,8 @@
 				A484AE551D4FBD0C00ED9305 /* ContactsWrapper */,
 				A484AE6F1D4FBD0C00ED9305 /* ContactsWrapperTests */,
 				A484AE541D4FBD0C00ED9305 /* Products */,
+				6E340F98BF5B4165AF6EDFC8 /* Pods */,
+				976E3C00660575381E55EFF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A484AE751D4FBD0C00ED9305 /* Build configuration list for PBXNativeTarget "ContactsWrapper" */;
 			buildPhases = (
+				C964BA8C269152111FE512BE /* [CP] Check Pods Manifest.lock */,
 				A484AE4F1D4FBD0C00ED9305 /* Sources */,
 				A484AE501D4FBD0C00ED9305 /* Frameworks */,
 				A484AE511D4FBD0C00ED9305 /* Resources */,
+				8C2537CB80881A0B2C213495 /* [CP] Embed Pods Frameworks */,
+				794340481A3A24227D31A57F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A484AE781D4FBD0C00ED9305 /* Build configuration list for PBXNativeTarget "ContactsWrapperTests" */;
 			buildPhases = (
+				80B4BF123D261B3B01FB07BA /* [CP] Check Pods Manifest.lock */,
 				A484AE681D4FBD0C00ED9305 /* Sources */,
 				A484AE691D4FBD0C00ED9305 /* Frameworks */,
 				A484AE6A1D4FBD0C00ED9305 /* Resources */,
+				912C59C746E2631FBD83856E /* [CP] Embed Pods Frameworks */,
+				553BC6FAD330519425231277 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +261,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		553BC6FAD330519425231277 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		794340481A3A24227D31A57F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80B4BF123D261B3B01FB07BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8C2537CB80881A0B2C213495 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		912C59C746E2631FBD83856E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C964BA8C269152111FE512BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A484AE4F1D4FBD0C00ED9305 /* Sources */ = {
@@ -360,6 +491,7 @@
 		};
 		A484AE761D4FBD0C00ED9305 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 390F2C2D2907318CFF18B955 /* Pods-ContactsWrapper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -375,6 +507,7 @@
 		};
 		A484AE771D4FBD0C00ED9305 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25EBA6191C78548C584ACC73 /* Pods-ContactsWrapper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -390,6 +523,7 @@
 		};
 		A484AE791D4FBD0C00ED9305 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F21EEBE81D1BE4B05FBEDC62 /* Pods-ContactsWrapperTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ContactsWrapperTests/Info.plist;
@@ -402,6 +536,7 @@
 		};
 		A484AE7A1D4FBD0C00ED9305 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F97E5DAEDEEA09752BF1D106 /* Pods-ContactsWrapperTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ContactsWrapperTests/Info.plist;

@@ -1,0 +1,18 @@
+PODS:
+  - Expecta (1.0.5)
+  - OCMock (3.3.1)
+  - Quick (0.9.2)
+
+DEPENDENCIES:
+  - Expecta
+  - OCMock (~> 3.3)
+  - Quick
+
+SPEC CHECKSUMS:
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
+  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
+  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+
+PODFILE CHECKSUM: 06100dbdec52b105718772b6e475353f2b935ec1
+
+COCOAPODS: 1.0.1

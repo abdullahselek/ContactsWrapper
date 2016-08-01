@@ -6,34 +6,91 @@
 //  Copyright © 2016 Abdullah Selek. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+#import <Quick/Quick.h>
+#import <Expecta/Expecta.h>
+#import <OCMock/OCMock.h>
+#import "ContactsWrapper.h"
 
-@interface ContactsWrapperTests : XCTestCase
+@interface ContactsWrapper (Test)
+
+@property (nonatomic) CNContactStore *contactStore;
+
+@end
+
+@interface ContactsWrapperTests : QuickSpec
+
+@property (nonatomic) ContactsWrapper *contactsWrapper;
 
 @end
 
 @implementation ContactsWrapperTests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)spec
+{
+    describe(@"Contacts Wrapper", ^{
+        beforeEach(^{
+            self.contactsWrapper = [ContactsWrapper sharedInstance];
+        });
+        context(@"Initialization", ^{
+            it(@"if success", ^ {
+                expect(self.contactsWrapper).notTo.beNil();
+                expect(self.contactsWrapper.contactStore).notTo.beNil();
+            });
+        });
+        context(@"Check Get Contacts", ^{
+            it(@"Return any valid contact", ^ {
+                ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
+                CNContact *contact = [[CNContact alloc] init];
+                NSArray<CNContact *> *contactArray = @[contact];
+                OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
+                OCMStub([mockWrapper getContacts:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
+                {
+                    void (^completionBlock)(NSArray<CNContact *> *contacts);
+                    [invocation getArgument:&completionBlock atIndex:2];
+                    completionBlock(contactArray);
+                });
+                [[ContactsWrapper sharedInstance] getContacts:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                    expect(contacts).notTo.beNil();
+                }];
+                OCMStub([(id) mockWrapper stopMocking]);
+            });
+        });
+        context(@"Check Get Contacts with keys without authorization", ^{
+            it(@"Return any valid contact", ^ {
+                ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
+                CNContact *contact = [[CNContact alloc] init];
+                NSArray<CNContact *> *contactArray = @[contact];
+                OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
+                OCMStub([mockWrapper getContactsWithKeys:@[] completionBlock:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
+                {
+                    void (^completionBlock)(NSArray<CNContact *> *contacts);
+                    [invocation getArgument:&completionBlock atIndex:2];
+                    completionBlock(contactArray);
+                });
+                [[ContactsWrapper sharedInstance] getContactsWithKeys:OCMOCK_ANY completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                    expect(contacts).notTo.beNil();
+                }];
+                OCMStub([(id) mockWrapper stopMocking]);
+            });
+        });
+        context(@"Check Get Contacts with keys without authorization", ^{
+            it(@"Return an error", ^ {
+                ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
+                OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
+                NSError *error = [NSError errorWithDomain:@"TEST_DOMAIN" code:204 userInfo:@{}];
+                OCMStub([mockWrapper getContactsWithKeys:@[] completionBlock:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
+                {
+                    void (^completionBlock)(NSError * error);
+                    [invocation getArgument:&completionBlock atIndex:2];
+                    completionBlock(error);
+                });
+                [[ContactsWrapper sharedInstance] getContactsWithKeys:OCMOCK_ANY completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                    expect(error).notTo.beNil();
+                }];
+                OCMStub([(id) mockWrapper stopMocking]);
+            });
+        });
+    });
 }
 
 @end
