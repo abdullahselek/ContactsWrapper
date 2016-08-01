@@ -59,19 +59,7 @@
 
 - (void)getContacts:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 {
-    if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
-    {
-        [self takeContactsWithStore:self.contactStore key:nil completionBlock:completionBlock];
-    }
-    else
-    {
-        [self.contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            if (granted)
-            {
-                [self takeContactsWithStore:self.contactStore key:nil completionBlock:completionBlock];
-            }
-        }];
-    }
+    [self getContactsWithKeys:@[] completionBlock:completionBlock];
 }
 
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
@@ -87,14 +75,18 @@
             {
                 [self takeContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
             }
+            else
+            {
+                completionBlock(nil, error);
+            }
         }];
     }
 }
 
-- (void)takeContactsWithStore:(CNContactStore *)store key:(NSArray<id<CNKeyDescriptor>> * _Nullable)keys completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
+- (void)takeContactsWithStore:(CNContactStore *)store key:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 
 {
-    if (keys == nil) {
+    if (keys.count == 0) {
         keys = @[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey];
     }
     NSString *containerId = store.defaultContainerIdentifier;
