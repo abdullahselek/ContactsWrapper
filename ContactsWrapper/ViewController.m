@@ -50,6 +50,18 @@
             NSLog(@"Error : %@", error.description);
         }
     }];
+    // save contact
+    CNMutableContact *testContact = [CNMutableContact new];
+    testContact.givenName = @"Contacts";
+    testContact.familyName = @"Wrapper";
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"apple.png"]);
+    testContact.imageData = imageData;
+    [[ContactsWrapper sharedInstance] saveContact:testContact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+        if (isSuccess)
+        {
+            NSLog(@"Contact saved successfully");
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

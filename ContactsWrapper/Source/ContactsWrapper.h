@@ -30,6 +30,8 @@
 #import <Foundation/Foundation.h>
 #import <Contacts/Contacts.h>
 
+#define BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactsWrapper : NSObject
@@ -55,6 +57,13 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock Nullable contacts and error
  */
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
+
+/**
+  * Save given contact
+  *
+  * @param completionBlock isSuccess and error
+ */
+- (void)saveContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
 @end
 

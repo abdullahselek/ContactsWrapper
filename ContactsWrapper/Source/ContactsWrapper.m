@@ -77,7 +77,7 @@
             }
             else
             {
-                completionBlock(nil, error);
+                BLOCK_EXEC(completionBlock, nil, error);
             }
         }];
     }
@@ -95,12 +95,29 @@
     NSArray<CNContact *> *contacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:keys error:&contactError];
     if (contactError)
     {
-        completionBlock(nil, contactError);
+        BLOCK_EXEC(completionBlock, nil, contactError)
     }
     else
     {
-        completionBlock(contacts, nil);
+        BLOCK_EXEC(completionBlock, contacts, nil);
     }
+}
+
+- (void)saveContact:(CNMutableContact *)contact completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+{
+    CNSaveRequest *saveRequest = [CNSaveRequest new];
+    [saveRequest addContact:contact toContainerWithIdentifier:self.contactStore.defaultContainerIdentifier];
+    NSError *saveContactError;
+    [self.contactStore executeSaveRequest:saveRequest error:&saveContactError];
+    if (saveContactError)
+    {
+        BLOCK_EXEC(completionBlock, NO, saveContactError);
+    }
+    else
+    {
+        BLOCK_EXEC(completionBlock, YES, nil);
+    }
+    
 }
 
 @end
