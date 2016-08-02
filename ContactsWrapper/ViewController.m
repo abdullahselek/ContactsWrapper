@@ -62,6 +62,13 @@
             NSLog(@"Contact saved successfully");
         }
     }];
+    // get contacts with given name
+    [[ContactsWrapper sharedInstance] getContactWithGivenName:@"Contacts" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+        if (contacts)
+        {
+            NSLog(@"%@", contacts);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
