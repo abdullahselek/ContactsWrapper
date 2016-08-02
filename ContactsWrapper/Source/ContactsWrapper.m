@@ -62,7 +62,8 @@
     [self getContactsWithKeys:@[] completionBlock:completionBlock];
 }
 
-- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
+            completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
     {
@@ -83,7 +84,9 @@
     }
 }
 
-- (void)takeContactsWithStore:(CNContactStore *)store key:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
+- (void)takeContactsWithStore:(CNContactStore *)store
+                          key:(NSArray<id<CNKeyDescriptor>> *)keys
+              completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 
 {
     if (keys.count == 0) {
@@ -130,6 +133,25 @@
     }
     else
     {
+        BLOCK_EXEC(completionBlock, contacts, nil);
+    }
+}
+
+- (void)getContactWithGivenName:(NSString *)givenName
+                     familyName:(NSString *)familyName
+                completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+{
+    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
+    NSError *error;
+    NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
+    if (error)
+    {
+        BLOCK_EXEC(completionBlock, nil, error);
+    }
+    else
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"familyName == %@", familyName];
+        contacts = [contacts filteredArrayUsingPredicate:predicate];
         BLOCK_EXEC(completionBlock, contacts, nil);
     }
 }

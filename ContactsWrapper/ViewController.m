@@ -69,6 +69,12 @@
             NSLog(@"%@", contacts);
         }
     }];
+    // get contact with given & family name
+    [[ContactsWrapper sharedInstance] getContactWithGivenName:@"Contacts" familyName:@"Wrapper" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+        if (contacts) {
+            NSLog(@"%@", contacts);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
