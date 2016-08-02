@@ -90,6 +90,16 @@
                 OCMStub([(id) mockWrapper stopMocking]);
             });
         });
+        context(@"Save contact success", ^ {
+            it(@"Should return true", ^ {
+                CNMutableContact *contact = [CNMutableContact new];
+                contact.givenName = @"TEST_NAME";
+                contact.familyName = @"TEST_FAMILY_NAME";
+                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+        });
     });
 }
 
