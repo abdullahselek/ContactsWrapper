@@ -20,6 +20,7 @@
 @interface ContactsWrapperTests : QuickSpec
 
 @property (nonatomic) ContactsWrapper *contactsWrapper;
+@property (nonatomic) CNMutableContact *contact;
 
 @end
 
@@ -92,22 +93,16 @@
         });
         context(@"Save contact success", ^ {
             it(@"Should return true", ^ {
-                CNMutableContact *contact = [CNMutableContact new];
-                contact.givenName = @"TEST_NAME";
-                contact.familyName = @"TEST_FAMILY_NAME";
-                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                self.contact = [CNMutableContact new];
+                self.contact.givenName = @"TEST_NAME";
+                self.contact.familyName = @"TEST_FAMILY_NAME";
+                [[ContactsWrapper sharedInstance] saveContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
         });
         context(@"Check Get Contacts with given name", ^{
             it(@"Return a valid array", ^ {
-                CNMutableContact *contact = [CNMutableContact new];
-                contact.givenName = @"TEST_NAME";
-                contact.familyName = @"TEST_FAMILY_NAME";
-                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
-                    expect(isSuccess).beTruthy();
-                }];
                 [[ContactsWrapper sharedInstance] getContactWithGivenName:@"TEST_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
@@ -115,14 +110,16 @@
         });
         context(@"Check Get Contacts with given and family name", ^{
             it(@"Return a valid array", ^ {
-                CNMutableContact *contact = [CNMutableContact new];
-                contact.givenName = @"TEST_NAME";
-                contact.familyName = @"TEST_FAMILY_NAME";
-                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
-                    expect(isSuccess).beTruthy();
-                }];
                 [[ContactsWrapper sharedInstance] getContactWithGivenName:@"TEST_NAME" familyName:@"TEST_FAMILY_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
+                }];
+            });
+        });
+        context(@"Update contact success", ^{
+            it(@"Should return success", ^ {
+                self.contact.familyName = @"Familyname";
+                [[ContactsWrapper sharedInstance] updateContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                    expect(isSuccess).beTruthy();
                 }];
             });
         });
