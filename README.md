@@ -2,26 +2,34 @@
 Contacts wrapper for iOS 9 or upper with Objective-C
 
 # Available methods
-# Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
-	- (void)getContacts:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+	Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, 
+					CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
+	- (void)getContacts:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, 
+					NSError  * _Nullable error))completionBlock
 	
-# Get all contacts with given key descriptors
-	- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+	Get all contacts with given key descriptors
+	- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys 
+					completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, 
+						NSError  * _Nullable error))completionBlock
 
-# Saves given contact
-	- (void)saveContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+	Saves given contact
+	- (void)saveContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, 
+					NSError * _Nullable error))completionBlock
 
-# Get contacts with given name
-	- (void)getContactWithGivenName:(NSString *)givenName completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+	Get contacts with given name
+	- (void)getContactWithGivenName:(NSString *)givenName 
+					completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, 
+						NSError * _Nullable error))completionBlock
 
 
-# Get contacts with given and family name
-	- (void)getContactWithGivenName:(NSString *)givenName
-                     familyName:(NSString *)familyName
-                completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+	Get contacts with given and family name
+	- (void)getContactWithGivenName:(NSString *)givenName familyName:(NSString *)familyName
+                	completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, 
+                		NSError * _Nullable error))completionBlock
 
-# Updates given contact
-    - (void)updateContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+	Updates given contact
+    - (void)updateContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, 
+    				NSError * _Nullable error))completionBlock
 
 # License
 
