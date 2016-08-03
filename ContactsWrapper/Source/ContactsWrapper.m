@@ -67,14 +67,14 @@
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
     {
-        [self takeContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
+        [self fetchContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
     }
     else
     {
         [self.contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
             if (granted)
             {
-                [self takeContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
+                [self fetchContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
             }
             else
             {
@@ -84,7 +84,7 @@
     }
 }
 
-- (void)takeContactsWithStore:(CNContactStore *)store
+- (void)fetchContactsWithStore:(CNContactStore *)store
                           key:(NSArray<id<CNKeyDescriptor>> *)keys
               completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 
@@ -124,22 +124,28 @@
 
 - (void)getContactWithGivenName:(NSString *)givenName completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 {
-    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
-    NSError *error;
-    NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
-    if (error)
-    {
-        BLOCK_EXEC(completionBlock, nil, error);
-    }
-    else
-    {
-        BLOCK_EXEC(completionBlock, contacts, nil);
-    }
+    [self fetchContactWithGivenName:givenName completionBlock:completionBlock];
 }
 
 - (void)getContactWithGivenName:(NSString *)givenName
                      familyName:(NSString *)familyName
                 completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+{
+    [self fetchContactWithGivenName:givenName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+        if (error)
+        {
+            BLOCK_EXEC(completionBlock, nil, error);
+        }
+        else
+        {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"familyName == %@", familyName];
+            contacts = [contacts filteredArrayUsingPredicate:predicate];
+            BLOCK_EXEC(completionBlock, contacts, nil);
+        }
+    }];
+}
+
+- (void)fetchContactWithGivenName:(NSString *)givenName completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 {
     NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
     NSError *error;
@@ -150,8 +156,6 @@
     }
     else
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"familyName == %@", familyName];
-        contacts = [contacts filteredArrayUsingPredicate:predicate];
         BLOCK_EXEC(completionBlock, contacts, nil);
     }
 }
