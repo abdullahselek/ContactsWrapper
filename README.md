@@ -1,9 +1,31 @@
 # ContactsWrapper
 Contacts wrapper for iOS 9 or upper with Objective-C
 
+# Requirements
+iOS 9.0+
+
+# CocoaPods
+
+CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
+	
+	$ gem install cocoapods
+
+To integrate ASCollectionView into your Xcode project using CocoaPods, specify it in your Podfile:
+
+	source 'https://github.com/CocoaPods/Specs.git'
+	platform :ios, '9.0'
+	use_frameworks!
+
+	target '<Your Target Name>' do
+    	pod 'ContactsWrapper', '0.0.1'
+	end
+
+Then, run the following command:
+
+	$ pod install
+
 # Available methods
-### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, 
-					CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
+### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
 	- (void)getContacts:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, 
 					NSError  * _Nullable error))completionBlock
 	
