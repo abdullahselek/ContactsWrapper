@@ -160,4 +160,20 @@
     }
 }
 
+- (void)updateContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+{
+    CNSaveRequest *saveRequest = [CNSaveRequest new];
+    [saveRequest updateContact:contact];
+    NSError *updateContactError;
+    [self.contactStore executeSaveRequest:saveRequest error:&updateContactError];
+    if (updateContactError)
+    {
+        BLOCK_EXEC(completionBlock, NO, updateContactError);
+    }
+    else
+    {
+        BLOCK_EXEC(completionBlock, YES, nil);
+    }
+}
+
 @end

@@ -75,6 +75,14 @@
             NSLog(@"%@", contacts);
         }
     }];
+    // update test contact
+    testContact.familyName = @"Familyname";
+    [[ContactsWrapper sharedInstance] updateContact:testContact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+        if (isSuccess)
+        {
+            NSLog(@"Contact updated successfully");
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
