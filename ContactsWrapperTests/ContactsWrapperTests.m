@@ -132,6 +132,22 @@
                 }];
             });
         });
+        context(@"Check delete contact", ^{
+            __block CNMutableContact *contact;
+            beforeEach(^ {
+                contact = [CNMutableContact new];
+                contact.givenName = @"CONTACT";
+                contact.familyName = @"DELETE";
+                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+            it(@"Should delete given contact", ^ {
+                [[ContactsWrapper sharedInstance] deleteContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+        });
     });
 }
 

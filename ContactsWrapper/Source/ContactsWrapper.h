@@ -104,6 +104,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getContactsWithEmailAddress:(NSString *)emailAddress
                     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
 
+/**
+  * Delete given contact
+  *
+  * @param completionBlock isSuccess and error
+ */
+- (void)deleteContact:(CNMutableContact *)contact
+      completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

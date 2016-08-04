@@ -57,13 +57,13 @@
     return self;
 }
 
-- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
+- (void)getContacts:(void (^)(NSArray<CNContact *> *contacts, NSError  *error))completionBlock;
 {
     [self getContactsWithKeys:@[] completionBlock:completionBlock];
 }
 
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
-            completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+            completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError  *error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
     {
@@ -131,7 +131,7 @@
 
 - (void)getContactsWithGivenName:(NSString *)givenName
                      familyName:(NSString *)familyName
-                completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+                completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 {
     [self fetchContactsWithGivenName:givenName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
         if (error)
@@ -164,7 +164,7 @@
 }
 
 - (void)updateContact:(CNMutableContact *)contact
-      completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+      completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
 {
     CNSaveRequest *saveRequest = [CNSaveRequest new];
     [saveRequest updateContact:contact];
@@ -193,6 +193,23 @@
     else
     {
         BLOCK_EXEC(completionBlock, contacts, nil);
+    }
+}
+
+- (void)deleteContact:(CNMutableContact *)contact
+      completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+{
+    CNSaveRequest *deleteRequest = [CNSaveRequest new];
+    [deleteRequest deleteContact:contact];
+    NSError *deleteContactError;
+    [self.contactStore executeSaveRequest:deleteRequest error:&deleteContactError];
+    if (deleteContactError)
+    {
+        BLOCK_EXEC(completionBlock, NO, deleteContactError);
+    }
+    else
+    {
+        BLOCK_EXEC(completionBlock, YES, nil);
     }
 }
 
