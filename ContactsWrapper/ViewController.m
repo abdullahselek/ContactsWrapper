@@ -63,14 +63,14 @@
         }
     }];
     // get contacts with given name
-    [[ContactsWrapper sharedInstance] getContactWithGivenName:@"Contacts" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+    [[ContactsWrapper sharedInstance] getContactsWithGivenName:@"Contacts" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
         if (contacts)
         {
             NSLog(@"%@", contacts);
         }
     }];
     // get contact with given & family name
-    [[ContactsWrapper sharedInstance] getContactWithGivenName:@"Contacts" familyName:@"Wrapper" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+    [[ContactsWrapper sharedInstance] getContactsWithGivenName:@"Contacts" familyName:@"Wrapper" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
         if (contacts) {
             NSLog(@"%@", contacts);
         }

@@ -103,14 +103,14 @@
         });
         context(@"Check Get Contacts with given name", ^{
             it(@"Return a valid array", ^ {
-                [[ContactsWrapper sharedInstance] getContactWithGivenName:@"TEST_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithGivenName:@"TEST_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
         context(@"Check Get Contacts with given and family name", ^{
             it(@"Return a valid array", ^ {
-                [[ContactsWrapper sharedInstance] getContactWithGivenName:@"TEST_NAME" familyName:@"TEST_FAMILY_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithGivenName:@"TEST_NAME" familyName:@"TEST_FAMILY_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
