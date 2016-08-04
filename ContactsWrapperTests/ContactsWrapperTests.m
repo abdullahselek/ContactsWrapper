@@ -96,6 +96,8 @@
                 self.contact = [CNMutableContact new];
                 self.contact.givenName = @"TEST_NAME";
                 self.contact.familyName = @"TEST_FAMILY_NAME";
+                CNLabeledValue *email = [[CNLabeledValue alloc] initWithLabel:CNLabelEmailiCloud value:@"test@email.com"];
+                self.contact.emailAddresses = @[email];
                 [[ContactsWrapper sharedInstance] saveContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
@@ -120,6 +122,13 @@
                 self.contact.familyName = @"Familyname";
                 [[ContactsWrapper sharedInstance] updateContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
+                }];
+            });
+        });
+        context(@"Check Get Contacts with email address", ^{
+            it(@"Return a valid array", ^ {
+                [[ContactsWrapper sharedInstance] getContactsWithEmailAddress:@"test@email.com" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                    expect(contacts).notTo.beNil();
                 }];
             });
         });

@@ -176,4 +176,20 @@
     }
 }
 
+- (void)getContactsWithEmailAddress:(NSString *)emailAddress
+                    completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
+{
+    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:emailAddress];
+    NSError *error;
+    NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
+    if (error)
+    {
+        BLOCK_EXEC(completionBlock, nil, error);
+    }
+    else
+    {
+        BLOCK_EXEC(completionBlock, contacts, nil);
+    }
+}
+
 @end

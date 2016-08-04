@@ -91,6 +91,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)updateContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
+/**
+  * Get contacts with given email address
+  *
+  * @param emailAddress Email address
+  * @param completionBlock Nullable contacts and error
+ */
+- (void)getContactsWithEmailAddress:(NSString *)emailAddress
+                    completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
