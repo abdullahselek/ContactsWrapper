@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
   *
   * @param completionBlock Nullable contacts and error
  */
-- (void)getContacts:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
+- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 
 /**
   * Get All Contacts with given keys
@@ -56,14 +56,16 @@ NS_ASSUME_NONNULL_BEGIN
   * @param keys Keys for filling contact data
   * @param completionBlock Nullable contacts and error
  */
-- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
+- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
+            completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 
 /**
   * Save given contact
   *
   * @param completionBlock isSuccess and error
  */
-- (void)saveContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+- (void)saveContact:(CNMutableContact *)contact
+    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Get Contacts with given name
@@ -71,7 +73,8 @@ NS_ASSUME_NONNULL_BEGIN
   * @param givenName Given name
   * @param completionBlock Nullable contacts and error
  */
-- (void)getContactsWithGivenName:(NSString *)givenName completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
+- (void)getContactsWithGivenName:(NSString *)givenName
+                 completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
 
 /**
  * Get Contacts with given name
@@ -82,14 +85,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)getContactsWithGivenName:(NSString *)givenName
                      familyName:(NSString *)familyName
-                completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
+                completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
 
 /**
   * Update given contact
   *
   * @param completionBlock isSuccess and error
  */
-- (void)updateContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+- (void)updateContact:(CNMutableContact *)contact
+      completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Get contacts with given email address

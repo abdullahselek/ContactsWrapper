@@ -57,13 +57,13 @@
     return self;
 }
 
-- (void)getContacts:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
+- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 {
     [self getContactsWithKeys:@[] completionBlock:completionBlock];
 }
 
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
-            completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+            completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
     {
@@ -106,7 +106,8 @@
     }
 }
 
-- (void)saveContact:(CNMutableContact *)contact completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+- (void)saveContact:(CNMutableContact *)contact
+    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
 {
     CNSaveRequest *saveRequest = [CNSaveRequest new];
     [saveRequest addContact:contact toContainerWithIdentifier:self.contactStore.defaultContainerIdentifier];
@@ -122,14 +123,15 @@
     }
 }
 
-- (void)getContactsWithGivenName:(NSString *)givenName completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
+- (void)getContactsWithGivenName:(NSString *)givenName
+                 completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 {
     [self fetchContactsWithGivenName:givenName completionBlock:completionBlock];
 }
 
 - (void)getContactsWithGivenName:(NSString *)givenName
                      familyName:(NSString *)familyName
-                completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+                completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 {
     [self fetchContactsWithGivenName:givenName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
         if (error)
@@ -145,7 +147,8 @@
     }];
 }
 
-- (void)fetchContactsWithGivenName:(NSString *)givenName completionBlock:(nullable void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+- (void)fetchContactsWithGivenName:(NSString *)givenName
+                   completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 {
     NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
     NSError *error;
@@ -160,7 +163,8 @@
     }
 }
 
-- (void)updateContact:(CNMutableContact *)contact completionBlock:(nullable void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+- (void)updateContact:(CNMutableContact *)contact
+      completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 {
     CNSaveRequest *saveRequest = [CNSaveRequest new];
     [saveRequest updateContact:contact];
