@@ -11,6 +11,15 @@
 #import <OCMock/OCMock.h>
 #import "ContactsWrapper.h"
 
+static NSString *const CWErrorDomain = @"TEST_DOMAIN";
+static NSString *const CWContactGivenName = @"TEST_NAME";
+static NSString *const CWContactFamilyName = @"TEST_FAMILY_NAME";
+static NSString *const CWContactUpdateFamilyName = @"FamilyName";
+static NSString *const CWContactEmailAddress = @"test@email.com";
+static NSString *const CWContactGivenNameDelete = @"CONTACT";
+static NSString *const CWContactFamilyNameDelete = @"DELETE";
+static int const CWErrorCode = 204;
+
 @interface ContactsWrapper (Test)
 
 @property (nonatomic) CNContactStore *contactStore;
@@ -78,7 +87,7 @@
             it(@"Return an error", ^ {
                 ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
                 OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
-                NSError *error = [NSError errorWithDomain:@"TEST_DOMAIN" code:204 userInfo:@{}];
+                NSError *error = [NSError errorWithDomain:CWErrorDomain code:CWErrorCode userInfo:@{}];
                 OCMStub([mockWrapper getContactsWithKeys:@[] completionBlock:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
                 {
                     void (^completionBlock)(NSError * error);
@@ -94,9 +103,9 @@
         context(@"Save contact success", ^ {
             it(@"Should return true", ^ {
                 self.contact = [CNMutableContact new];
-                self.contact.givenName = @"TEST_NAME";
-                self.contact.familyName = @"TEST_FAMILY_NAME";
-                CNLabeledValue *email = [[CNLabeledValue alloc] initWithLabel:CNLabelEmailiCloud value:@"test@email.com"];
+                self.contact.givenName = CWContactGivenName;
+                self.contact.familyName = CWContactFamilyName;
+                CNLabeledValue *email = [[CNLabeledValue alloc] initWithLabel:CNLabelEmailiCloud value:CWContactEmailAddress];
                 self.contact.emailAddresses = @[email];
                 [[ContactsWrapper sharedInstance] saveContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
@@ -105,21 +114,21 @@
         });
         context(@"Check Get Contacts with given name", ^{
             it(@"Return a valid array", ^ {
-                [[ContactsWrapper sharedInstance] getContactsWithGivenName:@"TEST_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithGivenName:CWContactGivenName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
         context(@"Check Get Contacts with given and family name", ^{
             it(@"Return a valid array", ^ {
-                [[ContactsWrapper sharedInstance] getContactsWithGivenName:@"TEST_NAME" familyName:@"TEST_FAMILY_NAME" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithGivenName:CWContactGivenName familyName:CWContactFamilyName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
         context(@"Update contact success", ^{
             it(@"Should return success", ^ {
-                self.contact.familyName = @"Familyname";
+                self.contact.familyName = CWContactUpdateFamilyName;
                 [[ContactsWrapper sharedInstance] updateContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
@@ -127,7 +136,7 @@
         });
         context(@"Check Get Contacts with email address", ^{
             it(@"Return a valid array", ^ {
-                [[ContactsWrapper sharedInstance] getContactsWithEmailAddress:@"test@email.com" completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithEmailAddress:CWContactEmailAddress completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
@@ -136,8 +145,8 @@
             __block CNMutableContact *contact;
             beforeEach(^ {
                 contact = [CNMutableContact new];
-                contact.givenName = @"CONTACT";
-                contact.familyName = @"DELETE";
+                contact.givenName = CWContactGivenNameDelete;
+                contact.familyName = CWContactFamilyNameDelete;
                 [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
