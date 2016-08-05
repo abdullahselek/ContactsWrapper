@@ -213,4 +213,18 @@
     }
 }
 
+- (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+{
+    if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
+    {
+        BLOCK_EXEC(completionBlock, YES, nil);
+    }
+    else
+    {
+        [self.contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            BLOCK_EXEC(completionBlock, granted, error);
+        }];
+    }
+}
+
 @end

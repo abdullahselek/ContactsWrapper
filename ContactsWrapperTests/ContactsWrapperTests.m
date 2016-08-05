@@ -24,6 +24,8 @@ static int const CWErrorCode = 204;
 
 @property (nonatomic) CNContactStore *contactStore;
 
+- (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock;
+
 @end
 
 @interface ContactsWrapperTests : QuickSpec
@@ -155,6 +157,28 @@ static int const CWErrorCode = 204;
                 [[ContactsWrapper sharedInstance] deleteContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
+            });
+        });
+        context(@"Check get authorization", ^{
+            it(@"Should authorized", ^ {
+                CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
+                OCMStub([(id) mockContactStore authorizationStatusForEntityType:
+                         CNEntityTypeContacts]).andReturn(CNAuthorizationStatusAuthorized);
+                [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+                    expect(isSuccess).beTruthy();
+                }];
+                OCMStub([(id) mockContactStore stopMocking]);
+            });
+        });
+        context(@"Check get authorization", ^{
+            it(@"Should not authorized", ^ {
+                CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
+                OCMStub([(id) mockContactStore authorizationStatusForEntityType:
+                         CNEntityTypeContacts]).andReturn(CNAuthorizationStatusDenied);
+                [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+                    expect(isSuccess).beFalsy();
+                }];
+                OCMStub([(id) mockContactStore stopMocking]);
             });
         });
     });
