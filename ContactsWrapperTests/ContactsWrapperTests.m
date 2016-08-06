@@ -35,6 +35,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
 
 @property (nonatomic) ContactsWrapper *contactsWrapper;
 @property (nonatomic) CNMutableContact *contact;
+@property (nonatomic) CNMutableGroup *group;
 
 @end
 
@@ -154,13 +155,21 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             });
         });
         context(@"Check add grouo", ^{
-            __block CNMutableGroup *group;
             beforeEach(^{
-                group = [CNMutableGroup new];
-                group.name = CWContactGroupName;
+                self.group = [CNMutableGroup new];
+                self.group.name = CWContactGroupName;
             });
             it(@"Should be success", ^ {
-                [[ContactsWrapper sharedInstance] addGroup:group completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+        });
+        context(@"Check add member to group", ^{
+            it(@"Member should be added", ^ {
+                [[ContactsWrapper sharedInstance] addGroupMember:self.contact
+                                                           group:self.group
+                                                 completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
