@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		2C95A9DEF91C5E4FD6386113 /* Pods_ContactsWrapperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9D0174F331D4988C0D983F /* Pods_ContactsWrapperTests.framework */; };
 		37B6866502622B0E88E29F4F /* libPods-ContactsWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1238611A2D5B9BF3B07D6A18 /* libPods-ContactsWrapper.a */; };
+		A43E61291D55622600FA5E9A /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A43E61281D55622600FA5E9A /* ContactsTableViewController.m */; };
 		A484AE581D4FBD0C00ED9305 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE571D4FBD0C00ED9305 /* main.m */; };
 		A484AE5B1D4FBD0C00ED9305 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */; };
-		A484AE5E1D4FBD0C00ED9305 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE5D1D4FBD0C00ED9305 /* ViewController.m */; };
 		A484AE611D4FBD0C00ED9305 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A484AE5F1D4FBD0C00ED9305 /* Main.storyboard */; };
 		A484AE631D4FBD0C00ED9305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A484AE621D4FBD0C00ED9305 /* Assets.xcassets */; };
 		A484AE661D4FBD0C00ED9305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A484AE641D4FBD0C00ED9305 /* LaunchScreen.storyboard */; };
@@ -35,12 +35,12 @@
 		25EBA6191C78548C584ACC73 /* Pods-ContactsWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper.release.xcconfig"; sourceTree = "<group>"; };
 		2F9D0174F331D4988C0D983F /* Pods_ContactsWrapperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactsWrapperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		390F2C2D2907318CFF18B955 /* Pods-ContactsWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper.debug.xcconfig"; sourceTree = "<group>"; };
+		A43E61271D55622600FA5E9A /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsTableViewController.h; path = Sample/ContactsTableViewController.h; sourceTree = "<group>"; };
+		A43E61281D55622600FA5E9A /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsTableViewController.m; path = Sample/ContactsTableViewController.m; sourceTree = "<group>"; };
 		A484AE531D4FBD0C00ED9305 /* ContactsWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A484AE571D4FBD0C00ED9305 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A484AE591D4FBD0C00ED9305 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A484AE5C1D4FBD0C00ED9305 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A484AE5D1D4FBD0C00ED9305 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A484AE601D4FBD0C00ED9305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A484AE621D4FBD0C00ED9305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A484AE651D4FBD0C00ED9305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,6 +96,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A43E61231D5561BE00FA5E9A /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				A43E61271D55622600FA5E9A /* ContactsTableViewController.h */,
+				A43E61281D55622600FA5E9A /* ContactsTableViewController.m */,
+			);
+			name = Sample;
+			sourceTree = "<group>";
+		};
 		A484AE4A1D4FBD0C00ED9305 = {
 			isa = PBXGroup;
 			children = (
@@ -120,11 +129,10 @@
 		A484AE551D4FBD0C00ED9305 /* ContactsWrapper */ = {
 			isa = PBXGroup;
 			children = (
+				A43E61231D5561BE00FA5E9A /* Sample */,
 				A484AE7D1D4FBD2300ED9305 /* Source */,
 				A484AE591D4FBD0C00ED9305 /* AppDelegate.h */,
 				A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */,
-				A484AE5C1D4FBD0C00ED9305 /* ViewController.h */,
-				A484AE5D1D4FBD0C00ED9305 /* ViewController.m */,
 				A484AE5F1D4FBD0C00ED9305 /* Main.storyboard */,
 				A484AE621D4FBD0C00ED9305 /* Assets.xcassets */,
 				A484AE641D4FBD0C00ED9305 /* LaunchScreen.storyboard */,
@@ -361,8 +369,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A484AE801D4FBD4100ED9305 /* ContactsWrapper.m in Sources */,
-				A484AE5E1D4FBD0C00ED9305 /* ViewController.m in Sources */,
 				A484AE5B1D4FBD0C00ED9305 /* AppDelegate.m in Sources */,
+				A43E61291D55622600FA5E9A /* ContactsTableViewController.m in Sources */,
 				A484AE581D4FBD0C00ED9305 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

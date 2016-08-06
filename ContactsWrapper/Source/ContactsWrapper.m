@@ -82,32 +82,22 @@
               completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 
 {
-    __block NSArray *keyDescriptors = keys;
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
-        if (isSuccess)
-        {
-            if (keyDescriptors.count == 0)
-            {
-                keyDescriptors = @[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey];
-            }
-            NSString *containerId = store.defaultContainerIdentifier;
-            NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId];
-            NSError *contactError;
-            NSArray<CNContact *> *contacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:keys error:&contactError];
-            if (contactError)
-            {
-                BLOCK_EXEC(completionBlock, nil, contactError)
-            }
-            else
-            {
-                BLOCK_EXEC(completionBlock, contacts, nil);
-            }
-        }
-        else
-        {
-            BLOCK_EXEC(completionBlock, nil, error);
-        }
-    }];
+    if (keys.count == 0)
+    {
+        keys = @[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey];
+    }
+    NSString *containerId = store.defaultContainerIdentifier;
+    NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId];
+    NSError *contactError;
+    NSArray<CNContact *> *contacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:keys error:&contactError];
+    if (contactError)
+    {
+        BLOCK_EXEC(completionBlock, nil, contactError)
+    }
+    else
+    {
+        BLOCK_EXEC(completionBlock, contacts, nil);
+    }
 }
 
 - (void)saveContact:(CNMutableContact *)contact
@@ -163,26 +153,17 @@
 - (void)fetchContactsWithGivenName:(NSString *)givenName
                    completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
-        if (isSuccess)
-        {
-            NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
-            NSError *error;
-            NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
-            if (error)
-            {
-                BLOCK_EXEC(completionBlock, nil, error);
-            }
-            else
-            {
-                BLOCK_EXEC(completionBlock, contacts, nil);
-            }
-        }
-        else
-        {
-            BLOCK_EXEC(completionBlock, nil, error);
-        }
-    }];
+    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
+    NSError *error;
+    NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
+    if (error)
+    {
+        BLOCK_EXEC(completionBlock, nil, error);
+    }
+    else
+    {
+        BLOCK_EXEC(completionBlock, contacts, nil);
+    }
 }
 
 - (void)updateContact:(CNMutableContact *)contact
