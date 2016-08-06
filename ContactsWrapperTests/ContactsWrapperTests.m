@@ -18,6 +18,7 @@ static NSString *const CWContactUpdateFamilyName = @"FamilyName";
 static NSString *const CWContactEmailAddress = @"test@email.com";
 static NSString *const CWContactGivenNameDelete = @"CONTACT";
 static NSString *const CWContactFamilyNameDelete = @"DELETE";
+static NSString *const CWContactGroupName = @"TEST_GROUP";
 
 @interface ContactsWrapper (Test)
 
@@ -150,6 +151,18 @@ static NSString *const CWContactFamilyNameDelete = @"DELETE";
                     expect(isSuccess).beTruthy();
                 }];
                 OCMStub([(id) mockContactStore stopMocking]);
+            });
+        });
+        context(@"Check add grouo", ^{
+            __block CNMutableGroup *group;
+            beforeEach(^{
+                group = [CNMutableGroup new];
+                group.name = CWContactGroupName;
+            });
+            it(@"Should be success", ^ {
+                [[ContactsWrapper sharedInstance] addGroup:group completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                    expect(isSuccess).beTruthy();
+                }];
             });
         });
     });

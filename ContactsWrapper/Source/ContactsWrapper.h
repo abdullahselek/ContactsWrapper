@@ -112,6 +112,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deleteContact:(CNContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
+/**
+  * Add given group to contacts list
+  *
+  * @param completionBlock isSuccess and error
+ */
+- (void)addGroup:(CNMutableGroup *)group
+ completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

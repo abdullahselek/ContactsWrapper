@@ -253,6 +253,32 @@
     }];
 }
 
+- (void)addGroup:(CNMutableGroup *)group
+    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            CNSaveRequest *addRequest = [CNSaveRequest new];
+            [addRequest addGroup:group toContainerWithIdentifier:self.contactStore.defaultContainerIdentifier];
+            NSError *groupError;
+            [self.contactStore executeSaveRequest:addRequest error:&groupError];
+            if (groupError)
+            {
+                BLOCK_EXEC(completionBlock, NO, groupError);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, YES, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, NO, error);
+        }
+    }];
+}
+
 - (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
