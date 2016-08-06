@@ -17,7 +17,7 @@ To integrate ASCollectionView into your Xcode project using CocoaPods, specify i
 	use_frameworks!
 
 	target '<Your Target Name>' do
-    	pod 'ContactsWrapper', '0.0.2'
+    	pod 'ContactsWrapper', '0.0.3'
 	end
 
 Then, run the following command:
@@ -56,6 +56,18 @@ Then, run the following command:
 ### Delete given contact
 	- (void)deleteContact:(CNMutableContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+
+### Add given group to contacts list
+	- (void)addGroup:(CNMutableGroup *)group
+ 		completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+
+### Add given member to given group
+	- (void)addGroupMember:(CNContact *)contact
+                 group:(CNGroup *)group
+       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+
+### Fething groups
+	- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
 
 # License
 
