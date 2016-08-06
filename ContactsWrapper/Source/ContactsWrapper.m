@@ -306,6 +306,31 @@
     }];
 }
 
+- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> *groups, NSError *error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            NSString *containerId = self.contactStore.defaultContainerIdentifier;
+            NSPredicate *predicate = [CNGroup predicateForGroupsInContainerWithIdentifier:containerId];
+            NSError *groupsError;
+            NSArray<CNGroup*> *groups = [self.contactStore groupsMatchingPredicate:predicate error:&groupsError];
+            if (groupsError)
+            {
+                BLOCK_EXEC(completionBlock, nil, groupsError);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, groups, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, nil, error);
+        }
+    }];
+}
+
 - (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)

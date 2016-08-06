@@ -174,6 +174,13 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
+        context(@"Check get groups", ^{
+            it(@"Should return a valid array", ^ {
+                [[ContactsWrapper sharedInstance] getGroupsWithCompletionBlock:^(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error) {
+                    expect(groups).notTo.beNil();
+                }];
+            });
+        });
     });
 }
 

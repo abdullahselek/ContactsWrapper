@@ -131,6 +131,13 @@ NS_ASSUME_NONNULL_BEGIN
                  group:(CNGroup *)group
        completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
+/**
+  * Get groups
+  *
+  * @param completionBlock Nullable groups and error
+ */
+- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
