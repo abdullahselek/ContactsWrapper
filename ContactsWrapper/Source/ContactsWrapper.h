@@ -109,7 +109,7 @@ NS_ASSUME_NONNULL_BEGIN
   *
   * @param completionBlock isSuccess and error
  */
-- (void)deleteContact:(CNMutableContact *)contact
+- (void)deleteContact:(CNContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
 @end

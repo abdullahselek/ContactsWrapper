@@ -18,7 +18,6 @@ static NSString *const CWContactUpdateFamilyName = @"FamilyName";
 static NSString *const CWContactEmailAddress = @"test@email.com";
 static NSString *const CWContactGivenNameDelete = @"CONTACT";
 static NSString *const CWContactFamilyNameDelete = @"DELETE";
-static int const CWErrorCode = 204;
 
 @interface ContactsWrapper (Test)
 

@@ -226,14 +226,15 @@
     }];
 }
 
-- (void)deleteContact:(CNMutableContact *)contact
+- (void)deleteContact:(CNContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *deleteRequest = [CNSaveRequest new];
-            [deleteRequest deleteContact:contact];
+            CNMutableContact *mutableContact = contact.mutableCopy;
+            [deleteRequest deleteContact:mutableContact];
             NSError *deleteContactError;
             [self.contactStore executeSaveRequest:deleteRequest error:&deleteContactError];
             if (deleteContactError)

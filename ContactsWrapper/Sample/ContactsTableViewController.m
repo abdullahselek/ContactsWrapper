@@ -62,12 +62,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        CNMutableContact *deleteContact = [CNMutableContact new];
         CNContact *selectedContact = self.contacts[indexPath.row];
-        deleteContact.givenName = selectedContact.givenName;
-        deleteContact.familyName = selectedContact.familyName;
-        deleteContact.phoneNumbers = selectedContact.phoneNumbers;
-        [[ContactsWrapper sharedInstance] deleteContact:deleteContact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+        [[ContactsWrapper sharedInstance] deleteContact:selectedContact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
             if (isSuccess)
             {
                 [self.contacts removeObject:selectedContact];
