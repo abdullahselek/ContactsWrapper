@@ -44,10 +44,10 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
 - (void)spec
 {
     describe(@"Contacts Wrapper", ^{
-        beforeEach(^{
-            self.contactsWrapper = [ContactsWrapper sharedInstance];
-        });
         context(@"Initialization", ^{
+            beforeEach(^{
+                self.contactsWrapper = [ContactsWrapper sharedInstance];
+            });
             it(@"if success", ^ {
                 expect(self.contactsWrapper).notTo.beNil();
                 expect(self.contactsWrapper.contactStore).notTo.beNil();
