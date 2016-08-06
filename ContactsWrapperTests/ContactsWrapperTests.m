@@ -24,6 +24,9 @@ static int const CWErrorCode = 204;
 
 @property (nonatomic) CNContactStore *contactStore;
 
+- (void)fetchContactsWithStore:(CNContactStore *)store
+                           key:(NSArray<id<CNKeyDescriptor>> *)keys
+               completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock;
 - (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock;
 
 @end
@@ -51,55 +54,24 @@ static int const CWErrorCode = 204;
         });
         context(@"Check Get Contacts", ^{
             it(@"Return any valid contact", ^ {
-                ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
-                CNContact *contact = [[CNContact alloc] init];
-                NSArray<CNContact *> *contactArray = @[contact];
-                OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
-                OCMStub([mockWrapper getContacts:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
-                {
-                    void (^completionBlock)(NSArray<CNContact *> *contacts);
-                    [invocation getArgument:&completionBlock atIndex:2];
-                    completionBlock(contactArray);
-                });
                 [[ContactsWrapper sharedInstance] getContacts:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
-                OCMStub([(id) mockWrapper stopMocking]);
             });
         });
-        context(@"Check Get Contacts with keys without authorization", ^{
+        context(@"Check Get Contacts with keys", ^{
             it(@"Return any valid contact", ^ {
-                ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
-                CNContact *contact = [[CNContact alloc] init];
-                NSArray<CNContact *> *contactArray = @[contact];
-                OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
-                OCMStub([mockWrapper getContactsWithKeys:@[] completionBlock:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
-                {
-                    void (^completionBlock)(NSArray<CNContact *> *contacts);
-                    [invocation getArgument:&completionBlock atIndex:2];
-                    completionBlock(contactArray);
-                });
-                [[ContactsWrapper sharedInstance] getContactsWithKeys:OCMOCK_ANY completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithKeys:@[] completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
-                OCMStub([(id) mockWrapper stopMocking]);
             });
         });
-        context(@"Check Get Contacts with keys without authorization", ^{
-            it(@"Return an error", ^ {
-                ContactsWrapper *mockWrapper = OCMClassMock([ContactsWrapper class]);
-                OCMStub([(id) mockWrapper sharedInstance]).andReturn(mockWrapper);
-                NSError *error = [NSError errorWithDomain:CWErrorDomain code:CWErrorCode userInfo:@{}];
-                OCMStub([mockWrapper getContactsWithKeys:@[] completionBlock:OCMOCK_ANY]).andDo(^(NSInvocation *invocation)
-                {
-                    void (^completionBlock)(NSError * error);
-                    [invocation getArgument:&completionBlock atIndex:2];
-                    completionBlock(error);
-                });
-                [[ContactsWrapper sharedInstance] getContactsWithKeys:OCMOCK_ANY completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
-                    expect(error).notTo.beNil();
+        context(@"Check Fetch Contacts with store and key", ^{
+            it(@"Return any valid contact", ^ {
+                CNContactStore *contactStore = [ContactsWrapper sharedInstance].contactStore;
+                [[ContactsWrapper sharedInstance] fetchContactsWithStore:contactStore key:@[] completionBlock:^(NSArray<CNContact *> *contacts, NSError *error) {
+                    expect(contacts).notTo.beNil();
                 }];
-                OCMStub([(id) mockWrapper stopMocking]);
             });
         });
         context(@"Save contact success", ^ {
@@ -171,12 +143,12 @@ static int const CWErrorCode = 204;
             });
         });
         context(@"Check get authorization", ^{
-            it(@"Should not authorized", ^ {
+            it(@"Should also be authorized", ^ {
                 CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
                 OCMStub([(id) mockContactStore authorizationStatusForEntityType:
                          CNEntityTypeContacts]).andReturn(CNAuthorizationStatusDenied);
                 [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
-                    expect(isSuccess).beFalsy();
+                    expect(isSuccess).beTruthy();
                 }];
                 OCMStub([(id) mockContactStore stopMocking]);
             });
