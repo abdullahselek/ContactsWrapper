@@ -153,17 +153,26 @@
 - (void)fetchContactsWithGivenName:(NSString *)givenName
                    completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 {
-    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
-    NSError *error;
-    NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
-    if (error)
-    {
-        BLOCK_EXEC(completionBlock, nil, error);
-    }
-    else
-    {
-        BLOCK_EXEC(completionBlock, contacts, nil);
-    }
+    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
+            NSError *error;
+            NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
+            if (error)
+            {
+                BLOCK_EXEC(completionBlock, nil, error);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, contacts, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, nil, error);
+        }
+    }];
 }
 
 - (void)updateContact:(CNMutableContact *)contact
