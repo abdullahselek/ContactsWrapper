@@ -18,4 +18,4 @@ script:
 - xcodebuild -workspace ContactsWrapper.xcworkspace -scheme ContactsWrapper -destination "platform=iOS Simulator,name=iPhone 6,OS=9.1" clean test GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
 # xctool -workspace 'ContactsWrapper.xcworkspace' -scheme 'ContactsWrapper' -sdk 'iphonesimulator' -configuration Debug clean test
 
-after_success: slather
+after_success: slather coverage -s --scheme ContactsWrapper --workspace ContactsWrapper.xcworkspace ContactsWrapper.xcodeproj
