@@ -17,7 +17,7 @@
 		A484AE661D4FBD0C00ED9305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A484AE641D4FBD0C00ED9305 /* LaunchScreen.storyboard */; };
 		A484AE711D4FBD0C00ED9305 /* ContactsWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE701D4FBD0C00ED9305 /* ContactsWrapperTests.m */; };
 		A484AE7C1D4FBD1E00ED9305 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A484AE7B1D4FBD1E00ED9305 /* Contacts.framework */; };
-		A484AE801D4FBD4100ED9305 /* ContactsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE7F1D4FBD4100ED9305 /* ContactsWrapper.m */; };
+		A4AC504E1D57BEA1007B445D /* ContactsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC504D1D57BEA1007B445D /* ContactsWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +49,8 @@
 		A484AE701D4FBD0C00ED9305 /* ContactsWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsWrapperTests.m; sourceTree = "<group>"; };
 		A484AE721D4FBD0C00ED9305 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A484AE7B1D4FBD1E00ED9305 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
-		A484AE7E1D4FBD4100ED9305 /* ContactsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsWrapper.h; path = Source/ContactsWrapper.h; sourceTree = "<group>"; };
-		A484AE7F1D4FBD4100ED9305 /* ContactsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsWrapper.m; path = Source/ContactsWrapper.m; sourceTree = "<group>"; };
+		A4AC504C1D57BEA1007B445D /* ContactsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsWrapper.h; path = Source/ContactsWrapper.h; sourceTree = "<group>"; };
+		A4AC504D1D57BEA1007B445D /* ContactsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsWrapper.m; path = Source/ContactsWrapper.m; sourceTree = "<group>"; };
 		F21EEBE81D1BE4B05FBEDC62 /* Pods-ContactsWrapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F97E5DAEDEEA09752BF1D106 /* Pods-ContactsWrapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				A43E61231D5561BE00FA5E9A /* Sample */,
-				A484AE7D1D4FBD2300ED9305 /* Source */,
+				A4AC504B1D57BE91007B445D /* Source */,
 				A484AE591D4FBD0C00ED9305 /* AppDelegate.h */,
 				A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */,
 				A484AE5F1D4FBD0C00ED9305 /* Main.storyboard */,
@@ -159,11 +159,11 @@
 			path = ContactsWrapperTests;
 			sourceTree = "<group>";
 		};
-		A484AE7D1D4FBD2300ED9305 /* Source */ = {
+		A4AC504B1D57BE91007B445D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A484AE7E1D4FBD4100ED9305 /* ContactsWrapper.h */,
-				A484AE7F1D4FBD4100ED9305 /* ContactsWrapper.m */,
+				A4AC504C1D57BEA1007B445D /* ContactsWrapper.h */,
+				A4AC504D1D57BEA1007B445D /* ContactsWrapper.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A484AE801D4FBD4100ED9305 /* ContactsWrapper.m in Sources */,
+				A4AC504E1D57BEA1007B445D /* ContactsWrapper.m in Sources */,
 				A484AE5B1D4FBD0C00ED9305 /* AppDelegate.m in Sources */,
 				A43E61291D55622600FA5E9A /* ContactsTableViewController.m in Sources */,
 				A484AE581D4FBD0C00ED9305 /* main.m in Sources */,
@@ -420,6 +420,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -465,6 +466,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
