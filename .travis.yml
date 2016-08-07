@@ -8,5 +8,5 @@ branches:
  only:
  - master
 
-script:
-- xcodebuild -workspace ContactsWrapper.xcworkspace -scheme ContactsWrapper -destination "platform=iOS Simulator,name=iPhone 6,OS=9.1" clean test
+script: xctool -workspace 'ContactsWrapper.xcworkspace' -scheme 'ContactsWrapper' -sdk 'iphonesimulator' -configuration Debug clean test
+# - xcodebuild -workspace ContactsWrapper.xcworkspace -scheme ContactsWrapper -destination "platform=iOS Simulator,name=iPhone 6,OS=9.1" clean test
