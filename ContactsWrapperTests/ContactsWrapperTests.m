@@ -44,11 +44,11 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
 
 - (void)spec
 {
-    describe(@"Contacts Wrapper", ^{
+    describe(@"Contacts Wrapper", ^ {
         beforeSuite(^{
             [JPSimulatorHacks grantAccessToAddressBook];
         });
-        context(@"Initialization", ^{
+        context(@"Initialization", ^ {
             beforeEach(^{
                 self.contactsWrapper = [ContactsWrapper sharedInstance];
             });
@@ -57,21 +57,21 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 expect(self.contactsWrapper.contactStore).notTo.beNil();
             });
         });
-        context(@"Check Get Contacts", ^{
+        context(@"Check Get Contacts", ^ {
             it(@"Return any valid contact", ^ {
                 [[ContactsWrapper sharedInstance] getContacts:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
-        context(@"Check Get Contacts with keys", ^{
+        context(@"Check Get Contacts with keys", ^ {
             it(@"Return any valid contact", ^ {
                 [[ContactsWrapper sharedInstance] getContactsWithKeys:@[] completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
-        context(@"Check Fetch Contacts with store and key", ^{
+        context(@"Check Fetch Contacts with store and key", ^ {
             it(@"Return any valid contact", ^ {
                 CNContactStore *contactStore = [ContactsWrapper sharedInstance].contactStore;
                 [[ContactsWrapper sharedInstance] fetchContactsWithStore:contactStore key:@[] completionBlock:^(NSArray<CNContact *> *contacts, NSError *error) {
@@ -91,21 +91,21 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
-        context(@"Check Get Contacts with given name", ^{
+        context(@"Check Get Contacts with given name", ^ {
             it(@"Return a valid array", ^ {
                 [[ContactsWrapper sharedInstance] getContactsWithGivenName:CWContactGivenName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
-        context(@"Check Get Contacts with given and family name", ^{
+        context(@"Check Get Contacts with given and family name", ^ {
             it(@"Return a valid array", ^ {
                 [[ContactsWrapper sharedInstance] getContactsWithGivenName:CWContactGivenName familyName:CWContactFamilyName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
-        context(@"Update contact success", ^{
+        context(@"Update contact success", ^ {
             it(@"Should return success", ^ {
                 self.contact.familyName = CWContactUpdateFamilyName;
                 [[ContactsWrapper sharedInstance] updateContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
@@ -113,14 +113,14 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
-        context(@"Check Get Contacts with email address", ^{
+        context(@"Check Get Contacts with email address", ^ {
             it(@"Return a valid array", ^ {
                 [[ContactsWrapper sharedInstance] getContactsWithEmailAddress:CWContactEmailAddress completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
-        context(@"Check delete contact", ^{
+        context(@"Check delete contact", ^ {
             __block CNMutableContact *contact;
             beforeEach(^ {
                 contact = [CNMutableContact new];
@@ -136,7 +136,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
-        context(@"Check get authorization", ^{
+        context(@"Check get authorization", ^ {
             it(@"Should authorized", ^ {
                 CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
                 OCMStub([(id) mockContactStore authorizationStatusForEntityType:
@@ -147,7 +147,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 OCMStub([(id) mockContactStore stopMocking]);
             });
         });
-        context(@"Check get authorization", ^{
+        context(@"Check get authorization", ^ {
             it(@"Should also be authorized", ^ {
                 CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
                 OCMStub([(id) mockContactStore authorizationStatusForEntityType:
@@ -158,8 +158,8 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 OCMStub([(id) mockContactStore stopMocking]);
             });
         });
-        context(@"Check add grouo", ^{
-            beforeEach(^{
+        context(@"Check add group", ^ {
+            beforeEach(^ {
                 self.group = [CNMutableGroup new];
                 self.group.name = CWContactGroupName;
             });
@@ -169,7 +169,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
-        context(@"Check add member to group", ^{
+        context(@"Check add member to group", ^ {
             it(@"Member should be added", ^ {
                 [[ContactsWrapper sharedInstance] addGroupMember:self.contact
                                                            group:self.group
@@ -178,7 +178,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
-        context(@"Check get groups", ^{
+        context(@"Check get groups", ^ {
             it(@"Should return a valid array", ^ {
                 [[ContactsWrapper sharedInstance] getGroupsWithCompletionBlock:^(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error) {
                     expect(groups).notTo.beNil();
