@@ -4,6 +4,7 @@ def testing_pods
     pod 'OCMock', '~> 3.3'
     pod 'Quick'
     pod 'Expecta'
+    pod 'JPSimulatorHacks'
 end
 
 target 'ContactsWrapper' do

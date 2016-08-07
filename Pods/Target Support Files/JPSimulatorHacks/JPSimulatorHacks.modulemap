@@ -1,0 +1,6 @@
+framework module JPSimulatorHacks {
+  umbrella header "JPSimulatorHacks-umbrella.h"
+
+  export *
+  module * { export * }
+}

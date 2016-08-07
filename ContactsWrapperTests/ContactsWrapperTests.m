@@ -9,6 +9,7 @@
 #import <Quick/Quick.h>
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
+#import <JPSimulatorHacks/JPSimulatorHacks.h>
 #import "ContactsWrapper.h"
 
 static NSString *const CWErrorDomain = @"TEST_DOMAIN";
@@ -47,6 +48,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
         context(@"Initialization", ^{
             beforeEach(^{
                 self.contactsWrapper = [ContactsWrapper sharedInstance];
+                [JPSimulatorHacks grantAccessToAddressBook];
             });
             it(@"if success", ^ {
                 expect(self.contactsWrapper).notTo.beNil();
