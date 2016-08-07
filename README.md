@@ -1,3 +1,6 @@
+![Build Status](https://travis-ci.org/abdullahselek/ContactsWrapper.svg?branch=master)
+![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ContactsWrapper.svg)
+
 # ContactsWrapper
 Contacts wrapper for iOS 9 or upper with Objective-C
 
