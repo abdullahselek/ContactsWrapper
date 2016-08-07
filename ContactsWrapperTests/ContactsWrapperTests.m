@@ -45,10 +45,12 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
 - (void)spec
 {
     describe(@"Contacts Wrapper", ^{
+        beforeSuite(^{
+            [JPSimulatorHacks grantAccessToAddressBook];
+        });
         context(@"Initialization", ^{
             beforeEach(^{
                 self.contactsWrapper = [ContactsWrapper sharedInstance];
-                [JPSimulatorHacks grantAccessToAddressBook];
             });
             it(@"if success", ^ {
                 expect(self.contactsWrapper).notTo.beNil();
