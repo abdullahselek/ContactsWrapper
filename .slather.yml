@@ -5,6 +5,5 @@ xcodeproj: ContactsWrapper.xcodeproj
 scheme: ContactsWrapper
 source_directory: ContactsWrapper/Source
 ignore:
-  - ContactsWrapper/Sample/*
-  - ContactsWrapper/*.{h,m}
+  - ContactsWrapper/Sample/
 # output_directory: code_coverage/xml_report

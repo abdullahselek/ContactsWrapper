@@ -10,8 +10,8 @@
 		2C95A9DEF91C5E4FD6386113 /* Pods_ContactsWrapperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9D0174F331D4988C0D983F /* Pods_ContactsWrapperTests.framework */; };
 		37B6866502622B0E88E29F4F /* libPods-ContactsWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1238611A2D5B9BF3B07D6A18 /* libPods-ContactsWrapper.a */; };
 		A43E61291D55622600FA5E9A /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A43E61281D55622600FA5E9A /* ContactsTableViewController.m */; };
-		A484AE581D4FBD0C00ED9305 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE571D4FBD0C00ED9305 /* main.m */; };
-		A484AE5B1D4FBD0C00ED9305 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */; };
+		A469FE4C1D5BE2A9007E0CFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A469FE4A1D5BE2A9007E0CFD /* AppDelegate.m */; };
+		A469FE501D5BE2D7007E0CFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A469FE4F1D5BE2D7007E0CFD /* main.m */; };
 		A484AE611D4FBD0C00ED9305 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A484AE5F1D4FBD0C00ED9305 /* Main.storyboard */; };
 		A484AE631D4FBD0C00ED9305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A484AE621D4FBD0C00ED9305 /* Assets.xcassets */; };
 		A484AE661D4FBD0C00ED9305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A484AE641D4FBD0C00ED9305 /* LaunchScreen.storyboard */; };
@@ -37,10 +37,10 @@
 		390F2C2D2907318CFF18B955 /* Pods-ContactsWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapper/Pods-ContactsWrapper.debug.xcconfig"; sourceTree = "<group>"; };
 		A43E61271D55622600FA5E9A /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsTableViewController.h; path = Sample/ContactsTableViewController.h; sourceTree = "<group>"; };
 		A43E61281D55622600FA5E9A /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsTableViewController.m; path = Sample/ContactsTableViewController.m; sourceTree = "<group>"; };
+		A469FE491D5BE2A9007E0CFD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Sample/AppDelegate.h; sourceTree = "<group>"; };
+		A469FE4A1D5BE2A9007E0CFD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Sample/AppDelegate.m; sourceTree = "<group>"; };
+		A469FE4F1D5BE2D7007E0CFD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Sample/Supporting Files/main.m"; sourceTree = "<group>"; };
 		A484AE531D4FBD0C00ED9305 /* ContactsWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A484AE571D4FBD0C00ED9305 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A484AE591D4FBD0C00ED9305 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A484AE601D4FBD0C00ED9305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A484AE621D4FBD0C00ED9305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A484AE651D4FBD0C00ED9305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,10 +99,21 @@
 		A43E61231D5561BE00FA5E9A /* Sample */ = {
 			isa = PBXGroup;
 			children = (
+				A469FE491D5BE2A9007E0CFD /* AppDelegate.h */,
+				A469FE4A1D5BE2A9007E0CFD /* AppDelegate.m */,
 				A43E61271D55622600FA5E9A /* ContactsTableViewController.h */,
 				A43E61281D55622600FA5E9A /* ContactsTableViewController.m */,
+				A469FE4E1D5BE2CB007E0CFD /* Supporting Files */,
 			);
 			name = Sample;
+			sourceTree = "<group>";
+		};
+		A469FE4E1D5BE2CB007E0CFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A469FE4F1D5BE2D7007E0CFD /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A484AE4A1D4FBD0C00ED9305 = {
@@ -131,23 +142,12 @@
 			children = (
 				A43E61231D5561BE00FA5E9A /* Sample */,
 				A4AC504B1D57BE91007B445D /* Source */,
-				A484AE591D4FBD0C00ED9305 /* AppDelegate.h */,
-				A484AE5A1D4FBD0C00ED9305 /* AppDelegate.m */,
 				A484AE5F1D4FBD0C00ED9305 /* Main.storyboard */,
 				A484AE621D4FBD0C00ED9305 /* Assets.xcassets */,
 				A484AE641D4FBD0C00ED9305 /* LaunchScreen.storyboard */,
 				A484AE671D4FBD0C00ED9305 /* Info.plist */,
-				A484AE561D4FBD0C00ED9305 /* Supporting Files */,
 			);
 			path = ContactsWrapper;
-			sourceTree = "<group>";
-		};
-		A484AE561D4FBD0C00ED9305 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A484AE571D4FBD0C00ED9305 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A484AE6F1D4FBD0C00ED9305 /* ContactsWrapperTests */ = {
@@ -369,9 +369,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4AC504E1D57BEA1007B445D /* ContactsWrapper.m in Sources */,
-				A484AE5B1D4FBD0C00ED9305 /* AppDelegate.m in Sources */,
 				A43E61291D55622600FA5E9A /* ContactsTableViewController.m in Sources */,
-				A484AE581D4FBD0C00ED9305 /* main.m in Sources */,
+				A469FE501D5BE2D7007E0CFD /* main.m in Sources */,
+				A469FE4C1D5BE2A9007E0CFD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
