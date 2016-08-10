@@ -1,4 +1,7 @@
 ci_service: travis_ci
 coverage_service: coveralls
+workspace: ContactsWrapper.xcodeworkspace
 xcodeproj: ContactsWrapper.xcodeproj
+scheme: ContactsWrapper
 source_directory: ContactsWrapper/Source
+# output_directory: code_coverage/xml_report
