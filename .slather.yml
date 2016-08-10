@@ -4,4 +4,7 @@ workspace: ContactsWrapper.xcodeworkspace
 xcodeproj: ContactsWrapper.xcodeproj
 scheme: ContactsWrapper
 source_directory: ContactsWrapper/Source
+ignore:
+  - ContactsWrapper/Sample/*
+  - ContactsWrapper/*.{h,m}
 # output_directory: code_coverage/xml_report
