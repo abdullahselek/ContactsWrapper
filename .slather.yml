@@ -5,5 +5,9 @@ xcodeproj: ContactsWrapper.xcodeproj
 scheme: ContactsWrapper
 source_directory: ContactsWrapper/Source
 ignore:
-  - ContactsWrapper/Sample/
+  - ContactsWrapper/Sample/AppDelegate.h
+  - ContactsWrapper/Sample/AppDelegate.m
+  - ContactsWrapper/Sample/ContactsTableViewController.h
+  - ContactsWrapper/Sample/ContactsTableViewController.m
+  - ContactsWrapper/Sample/Supporting Files/main.m
 # output_directory: code_coverage/xml_report

@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/plu/JPSimulatorHacks.svg?branch=master)](https://travis-ci.org/plu/JPSimulatorHacks)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # JPSimulatorHacks
 
@@ -13,7 +14,7 @@ documented below.
 
 ### Installation
 
-Install JPSimulatorHacks with [Cocoapods](http://cocoapods.org/)
+Install JPSimulatorHacks with [CocoaPods](http://cocoapods.org/)
 
 ```
 pod 'JPSimulatorHacks'
@@ -123,6 +124,24 @@ NSURL *assetURL = [NSURL URLWithString:@"https://raw.githubusercontent.com/plu/J
 ALAsset *asset = [JPSimulatorHacks addAssetWithURL:assetURL];
 ```
 
+### Contacts (iOS 9)
+
+This will grant permission for the new Contacts Framework which comes with iOS 9.
+
+```objc
+#import <JPSimulatorHacks/JPSimulatorHacks.h>
+
+@implementation MyAppTests
+
++ (void)setUp
+{
+    [super setUp];
+    [JPSimulatorHacks grantAccessToContacts];
+}
+
+@end
+```
+
 ### Timeout
 
 By default it tries to write the necessary entries to the `TCC.db` within
@@ -144,7 +163,7 @@ change this default timeout via:
 real application target: Its `Host Application` *is not* set to `None`!
 See also: http://stackoverflow.com/a/28135995/598057
 * When using Xcode bots, sometimes the tests run into an timeout.
-* The method disableKeyboardHelpers only works on iOS < 8.x.
+* The keyboard helpers have been removed in 1.3.0
 
 ## License (MIT)
 
