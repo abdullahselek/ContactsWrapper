@@ -21,12 +21,14 @@ To integrate ASCollectionView into your Xcode project using CocoaPods, specify i
 	use_frameworks!
 
 	target '<Your Target Name>' do
-    	pod 'ContactsWrapper', '0.0.3'
+    	pod 'ContactsWrapper', '0.9'
 	end
 
 Then, run the following command:
 
 	$ pod install
+
+# For iOS 10 add Privacy - Contacts Usage Description to your application .plist file
 
 # Available methods
 ### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
