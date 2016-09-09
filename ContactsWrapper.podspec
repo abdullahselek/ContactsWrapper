@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ContactsWrapper"
-  s.version      = "0.0.3"
+  s.version      = "0.9"
   s.summary      = "Contacts wrapper for iOS 9 or upper with Objective-C"
   s.homepage     = "https://github.com/abdullahselek/ContactsWrapper"
   
