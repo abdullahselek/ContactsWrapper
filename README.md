@@ -28,7 +28,8 @@ Then, run the following command:
 
 	$ pod install
 
-# For iOS 10 add Privacy - Contacts Usage Description to your application .plist file
+### For iOS 10 
+	add "Privacy - Contacts Usage Description" to your application .plist file
 
 # Available methods
 ### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
