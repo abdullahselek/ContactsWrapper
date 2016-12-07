@@ -18,6 +18,10 @@
 		A484AE711D4FBD0C00ED9305 /* ContactsWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A484AE701D4FBD0C00ED9305 /* ContactsWrapperTests.m */; };
 		A484AE7C1D4FBD1E00ED9305 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A484AE7B1D4FBD1E00ED9305 /* Contacts.framework */; };
 		A4AC504E1D57BEA1007B445D /* ContactsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC504D1D57BEA1007B445D /* ContactsWrapper.m */; };
+		A4E4A60B1DF88D4500CD88C8 /* ContactsWrapperFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E4A6091DF88D4500CD88C8 /* ContactsWrapperFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4E4A60E1DF88D4500CD88C8 /* ContactsWrapperFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E4A6071DF88D4500CD88C8 /* ContactsWrapperFramework.framework */; };
+		A4E4A6101DF88D4500CD88C8 /* ContactsWrapperFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4E4A6071DF88D4500CD88C8 /* ContactsWrapperFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A4E4A6151DF88D4D00CD88C8 /* ContactsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC504D1D57BEA1007B445D /* ContactsWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,28 @@
 			remoteGlobalIDString = A484AE521D4FBD0C00ED9305;
 			remoteInfo = ContactsWrapper;
 		};
+		A4E4A60C1DF88D4500CD88C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A484AE4B1D4FBD0C00ED9305 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4E4A6061DF88D4500CD88C8;
+			remoteInfo = ContactsWrapperFramework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A4E4A60F1DF88D4500CD88C8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A4E4A6101DF88D4500CD88C8 /* ContactsWrapperFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1238611A2D5B9BF3B07D6A18 /* libPods-ContactsWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ContactsWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +76,9 @@
 		A484AE7B1D4FBD1E00ED9305 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		A4AC504C1D57BEA1007B445D /* ContactsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsWrapper.h; path = Source/ContactsWrapper.h; sourceTree = "<group>"; };
 		A4AC504D1D57BEA1007B445D /* ContactsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsWrapper.m; path = Source/ContactsWrapper.m; sourceTree = "<group>"; };
+		A4E4A6071DF88D4500CD88C8 /* ContactsWrapperFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContactsWrapperFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E4A6091DF88D4500CD88C8 /* ContactsWrapperFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsWrapperFramework.h; sourceTree = "<group>"; };
+		A4E4A60A1DF88D4500CD88C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21EEBE81D1BE4B05FBEDC62 /* Pods-ContactsWrapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F97E5DAEDEEA09752BF1D106 /* Pods-ContactsWrapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsWrapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsWrapperTests/Pods-ContactsWrapperTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A484AE7C1D4FBD1E00ED9305 /* Contacts.framework in Frameworks */,
+				A4E4A60E1DF88D4500CD88C8 /* ContactsWrapperFramework.framework in Frameworks */,
 				37B6866502622B0E88E29F4F /* libPods-ContactsWrapper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +99,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C95A9DEF91C5E4FD6386113 /* Pods_ContactsWrapperTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E4A6031DF88D4500CD88C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +158,7 @@
 				A484AE7B1D4FBD1E00ED9305 /* Contacts.framework */,
 				A484AE551D4FBD0C00ED9305 /* ContactsWrapper */,
 				A484AE6F1D4FBD0C00ED9305 /* ContactsWrapperTests */,
+				A4E4A6081DF88D4500CD88C8 /* ContactsWrapperFramework */,
 				A484AE541D4FBD0C00ED9305 /* Products */,
 				6E340F98BF5B4165AF6EDFC8 /* Pods */,
 				976E3C00660575381E55EFF6 /* Frameworks */,
@@ -133,6 +170,7 @@
 			children = (
 				A484AE531D4FBD0C00ED9305 /* ContactsWrapper.app */,
 				A484AE6C1D4FBD0C00ED9305 /* ContactsWrapperTests.xctest */,
+				A4E4A6071DF88D4500CD88C8 /* ContactsWrapperFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,7 +206,27 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		A4E4A6081DF88D4500CD88C8 /* ContactsWrapperFramework */ = {
+			isa = PBXGroup;
+			children = (
+				A4E4A6091DF88D4500CD88C8 /* ContactsWrapperFramework.h */,
+				A4E4A60A1DF88D4500CD88C8 /* Info.plist */,
+			);
+			path = ContactsWrapperFramework;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A4E4A6041DF88D4500CD88C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E4A60B1DF88D4500CD88C8 /* ContactsWrapperFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		A484AE521D4FBD0C00ED9305 /* ContactsWrapper */ = {
@@ -181,10 +239,12 @@
 				A484AE511D4FBD0C00ED9305 /* Resources */,
 				8C2537CB80881A0B2C213495 /* [CP] Embed Pods Frameworks */,
 				794340481A3A24227D31A57F /* [CP] Copy Pods Resources */,
+				A4E4A60F1DF88D4500CD88C8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A4E4A60D1DF88D4500CD88C8 /* PBXTargetDependency */,
 			);
 			name = ContactsWrapper;
 			productName = ContactsWrapper;
@@ -212,6 +272,24 @@
 			productReference = A484AE6C1D4FBD0C00ED9305 /* ContactsWrapperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A4E4A6061DF88D4500CD88C8 /* ContactsWrapperFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E4A6131DF88D4500CD88C8 /* Build configuration list for PBXNativeTarget "ContactsWrapperFramework" */;
+			buildPhases = (
+				A4E4A6021DF88D4500CD88C8 /* Sources */,
+				A4E4A6031DF88D4500CD88C8 /* Frameworks */,
+				A4E4A6041DF88D4500CD88C8 /* Headers */,
+				A4E4A6051DF88D4500CD88C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContactsWrapperFramework;
+			productName = ContactsWrapperFramework;
+			productReference = A4E4A6071DF88D4500CD88C8 /* ContactsWrapperFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,6 +306,10 @@
 					A484AE6B1D4FBD0C00ED9305 = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = A484AE521D4FBD0C00ED9305;
+					};
+					A4E4A6061DF88D4500CD88C8 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -246,6 +328,7 @@
 			targets = (
 				A484AE521D4FBD0C00ED9305 /* ContactsWrapper */,
 				A484AE6B1D4FBD0C00ED9305 /* ContactsWrapperTests */,
+				A4E4A6061DF88D4500CD88C8 /* ContactsWrapperFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -262,6 +345,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A484AE6A1D4FBD0C00ED9305 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E4A6051DF88D4500CD88C8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,6 +473,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A4E4A6021DF88D4500CD88C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E4A6151DF88D4D00CD88C8 /* ContactsWrapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -390,6 +488,11 @@
 			isa = PBXTargetDependency;
 			target = A484AE521D4FBD0C00ED9305 /* ContactsWrapper */;
 			targetProxy = A484AE6D1D4FBD0C00ED9305 /* PBXContainerItemProxy */;
+		};
+		A4E4A60D1DF88D4500CD88C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4E4A6061DF88D4500CD88C8 /* ContactsWrapperFramework */;
+			targetProxy = A4E4A60C1DF88D4500CD88C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -563,6 +666,54 @@
 			};
 			name = Release;
 		};
+		A4E4A6111DF88D4500CD88C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ContactsWrapperFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ContactsWrapperFramework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A4E4A6121DF88D4500CD88C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ContactsWrapperFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahselek.ContactsWrapperFramework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -592,6 +743,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A4E4A6131DF88D4500CD88C8 /* Build configuration list for PBXNativeTarget "ContactsWrapperFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E4A6111DF88D4500CD88C8 /* Debug */,
+				A4E4A6121DF88D4500CD88C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
