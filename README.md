@@ -1,5 +1,6 @@
 ![Build Status](https://travis-ci.org/abdullahselek/ContactsWrapper.svg?branch=master)
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ContactsWrapper.svg)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/abdullahselek/ContactsWrapper/badge.svg?branch=master)](https://coveralls.io/github/abdullahselek/ContactsWrapper?branch=master)
 
 # ContactsWrapper
@@ -14,7 +15,7 @@ CocoaPods is a dependency manager for Cocoa projects. You can install it with th
 	
 	$ gem install cocoapods
 
-To integrate ASCollectionView into your Xcode project using CocoaPods, specify it in your Podfile:
+To integrate ContactsWrapper into your Xcode project using CocoaPods, specify it in your Podfile:
 
 	source 'https://github.com/CocoaPods/Specs.git'
 	platform :ios, '9.0'
@@ -27,6 +28,25 @@ To integrate ASCollectionView into your Xcode project using CocoaPods, specify i
 Then, run the following command:
 
 	$ pod install
+
+# Carthage
+
+Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with Homebrew using the following command:
+
+```
+brew update
+brew install carthage
+```
+
+To integrate ContactsWrapper into your Xcode project using Carthage, specify it in your Cartfile:
+
+```
+github "abdullahselek/ContactsWrapper" ~> 1.0
+```
+
+Run carthage update to build the framework and drag the built ContactsWrapper.framework into your Xcode project.
 
 ### For iOS 10 
 	add "Privacy - Contacts Usage Description" to your application .plist file
