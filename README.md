@@ -22,7 +22,7 @@ To integrate ContactsWrapper into your Xcode project using CocoaPods, specify it
 	use_frameworks!
 
 	target '<Your Target Name>' do
-    	pod 'ContactsWrapper', '0.9'
+    	pod 'ContactsWrapper', '1.0'
 	end
 
 Then, run the following command:
