@@ -12,23 +12,23 @@ iOS 9.0+
 # CocoaPods
 
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
-	
-	$ gem install cocoapods
-
+```	
+$ gem install cocoapods
+```
 To integrate ContactsWrapper into your Xcode project using CocoaPods, specify it in your Podfile:
+```
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
 
-	source 'https://github.com/CocoaPods/Specs.git'
-	platform :ios, '9.0'
-	use_frameworks!
-
-	target '<Your Target Name>' do
-    	pod 'ContactsWrapper', '1.0.1'
-	end
-
+target '<Your Target Name>' do
+	pod 'ContactsWrapper', '1.0.1'
+end
+```
 Then, run the following command:
-
-	$ pod install
-
+```
+$ pod install
+```
 # Carthage
 
 Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
@@ -48,53 +48,74 @@ github "abdullahselek/ContactsWrapper" ~> 1.0.1
 
 Run carthage update to build the framework and drag the built ContactsWrapper.framework into your Xcode project.
 
-### For iOS 10 
-	add "Privacy - Contacts Usage Description" to your application .plist file
-
+### For iOS 10
+```
+add "Privacy - Contacts Usage Description" to your application .plist file
+```
 # Available methods
 ### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
-	- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+```
+- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+```
 	
 ### Get all contacts with given key descriptors
-	- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
-            completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+```
+- (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys 
+			completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+```
 
 ### Saves given contact
-	- (void)saveContact:(CNMutableContact *)contact
-    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```
+- (void)saveContact:(CNMutableContact *)contact completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```
 
 ### Get contacts with given name
-	- (void)getContactsWithGivenName:(NSString *)givenName
+```
+- (void)getContactsWithGivenName:(NSString *)givenName
                  completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+```
 
 ### Get contacts with given and family name
-	- (void)getContactsWithGivenName:(NSString *)givenName
-                     familyName:(NSString *)familyName
-                completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+```
+- (void)getContactsWithGivenName:(NSString *)givenName 
+					  familyName:(NSString *)familyName 
+			     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+```
 
 ### Updates given contact
-    - (void)updateContact:(CNMutableContact *)contact
+```
+- (void)updateContact:(CNMutableContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```
 
 ### Get contacts with given email address
-	- (void)getContactsWithEmailAddress:(NSString *)emailAddress
+```
+- (void)getContactsWithEmailAddress:(NSString *)emailAddress
                     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 
 ### Delete given contact
-	- (void)deleteContact:(CNMutableContact *)contact
+```
+- (void)deleteContact:(CNMutableContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```      
 
 ### Add given group to contacts list
-	- (void)addGroup:(CNMutableGroup *)group
- 		completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```
+- (void)addGroup:(CNMutableGroup *)group
+ completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```
 
 ### Add given member to given group
-	- (void)addGroupMember:(CNContact *)contact
+```
+- (void)addGroupMember:(CNContact *)contact
                  group:(CNGroup *)group
        completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+```
 
 ### Fething groups
-	- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
+```
+- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
+```
 
 ###  Delete group
 ```
