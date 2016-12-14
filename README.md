@@ -22,7 +22,7 @@ To integrate ContactsWrapper into your Xcode project using CocoaPods, specify it
 	use_frameworks!
 
 	target '<Your Target Name>' do
-    	pod 'ContactsWrapper', '1.0'
+    	pod 'ContactsWrapper', '1.0.1'
 	end
 
 Then, run the following command:
@@ -43,7 +43,7 @@ brew install carthage
 To integrate ContactsWrapper into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "abdullahselek/ContactsWrapper" ~> 1.0
+github "abdullahselek/ContactsWrapper" ~> 1.0.1
 ```
 
 Run carthage update to build the framework and drag the built ContactsWrapper.framework into your Xcode project.
@@ -95,6 +95,18 @@ Run carthage update to build the framework and drag the built ContactsWrapper.fr
 
 ### Fething groups
 	- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
+
+###  Delete group
+```
+- (void)deleteGroup:(CNMutableGroup *)group
+    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+```
+
+### Update group
+```
+- (void)updateGroup:(CNMutableGroup *)group
+    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+```
 
 # License
 
