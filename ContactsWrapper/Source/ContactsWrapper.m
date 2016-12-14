@@ -306,6 +306,32 @@
     }];
 }
 
+- (void)updateGroup:(CNMutableGroup *)group
+    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            CNSaveRequest *saveRequest = [CNSaveRequest new];
+            [saveRequest updateGroup:group];
+            NSError *updateGroupError;
+            [self.contactStore executeSaveRequest:saveRequest error:&updateGroupError];
+            if (updateGroupError)
+            {
+                BLOCK_EXEC(completionBlock, NO, updateGroupError);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, YES, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, NO, error);
+        }
+    }];
+}
+
 - (void)addGroupMember:(CNContact *)contact
                  group:(CNGroup *)group
        completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock

@@ -129,6 +129,14 @@ NS_ASSUME_NONNULL_BEGIN
     completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
+  * Update given group
+  *
+  * @param completionBlock isSuccess and error
+ */
+- (void)updateGroup:(CNMutableGroup *)group
+    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+
+/**
   * Add given member to given group
   *
   * @param contact Contact will be added to group
