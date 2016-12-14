@@ -279,6 +279,33 @@
     }];
 }
 
+- (void)deleteGroup:(CNMutableGroup *)group
+    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            CNSaveRequest *deleteRequest = [CNSaveRequest new];
+            CNMutableGroup *mutableGroup = group.mutableCopy;
+            [deleteRequest deleteGroup:mutableGroup];
+            NSError *deleteGroupError;
+            [self.contactStore executeSaveRequest:deleteRequest error:&deleteGroupError];
+            if (deleteGroupError)
+            {
+                BLOCK_EXEC(completionBlock, NO, deleteGroupError);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, YES, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, NO, error);
+        }
+    }];
+}
+
 - (void)addGroupMember:(CNContact *)contact
                  group:(CNGroup *)group
        completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
