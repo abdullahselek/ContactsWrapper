@@ -206,6 +206,18 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
+        context(@"Check delete group", ^ {
+            beforeEach(^ {
+                self.group = [CNMutableGroup new];
+                self.group.name = CWContactGroupName;
+            });
+            it(@"Should be success", ^ {
+                [[ContactsWrapper sharedInstance] deleteGroup:self.group
+                                              completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+        });
     });
 }
 
