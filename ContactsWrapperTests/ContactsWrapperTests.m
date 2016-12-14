@@ -211,9 +211,26 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 self.group = [CNMutableGroup new];
                 self.group.name = CWContactGroupName;
             });
-            it(@"Should be success", ^ {
+            it(@"Should be succeed", ^ {
                 [[ContactsWrapper sharedInstance] deleteGroup:self.group
                                               completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+        });
+        context(@"Check update group", ^{
+            beforeEach(^ {
+                self.group = [CNMutableGroup new];
+                self.group.name = CWContactGroupName;
+                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                    if (error) {
+                        failure(@"Update group not ready");
+                    }
+                }];
+            });
+            it(@"Should be succeed", ^{
+                self.group.name = @"UpdatedGroup";
+                [[ContactsWrapper sharedInstance] updateGroup:self.group completionBlock:^(bool isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
