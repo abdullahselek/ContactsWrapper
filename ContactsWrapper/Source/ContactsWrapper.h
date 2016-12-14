@@ -84,8 +84,8 @@ NS_ASSUME_NONNULL_BEGIN
  * @param completionBlock Nullable contacts and error
  */
 - (void)getContactsWithGivenName:(NSString *)givenName
-                     familyName:(NSString *)familyName
-                completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
+                      familyName:(NSString *)familyName
+                 completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
 
 /**
   * Update given contact

@@ -78,8 +78,8 @@
 }
 
 - (void)fetchContactsWithStore:(CNContactStore *)store
-                          key:(NSArray<id<CNKeyDescriptor>> *)keys
-              completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
+                           key:(NSArray<id<CNKeyDescriptor>> *)keys
+               completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 
 {
     if (keys.count == 0)
@@ -133,8 +133,8 @@
 }
 
 - (void)getContactsWithGivenName:(NSString *)givenName
-                     familyName:(NSString *)familyName
-                completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
+                      familyName:(NSString *)familyName
+                 completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 {
     [self fetchContactsWithGivenName:givenName completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
         if (error)
@@ -254,7 +254,7 @@
 }
 
 - (void)addGroup:(CNMutableGroup *)group
-    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+ completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
         if (isSuccess)
