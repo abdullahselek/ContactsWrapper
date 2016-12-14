@@ -92,7 +92,7 @@ add "Privacy - Contacts Usage Description" to your application .plist file
 ```
 - (void)getContactsWithEmailAddress:(NSString *)emailAddress
                     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
-
+```
 ### Delete given contact
 ```
 - (void)deleteContact:(CNMutableContact *)contact
