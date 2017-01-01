@@ -6,10 +6,10 @@
 # ContactsWrapper
 Contacts wrapper for iOS 9 or upper with Objective-C
 
-# Requirements
+## Requirements
 iOS 9.0+
 
-# CocoaPods
+## CocoaPods
 
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
 ```	
@@ -29,7 +29,7 @@ Then, run the following command:
 ```
 $ pod install
 ```
-# Carthage
+## Carthage
 
 Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
@@ -52,7 +52,7 @@ Run carthage update to build the framework and drag the built ContactsWrapper.fr
 ```
 add "Privacy - Contacts Usage Description" to your application .plist file
 ```
-# Available methods
+## Available methods
 ### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
 ```
 - (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
@@ -129,7 +129,7 @@ add "Privacy - Contacts Usage Description" to your application .plist file
     completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 ```
 
-# License
+## License
 
 The MIT License (MIT)
 
