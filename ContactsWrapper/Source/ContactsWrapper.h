@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)saveContact:(CNMutableContact *)contact
-    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+    completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Get Contacts with given name
@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)updateContact:(CNMutableContact *)contact
-      completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+      completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Get contacts with given email address
@@ -110,7 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)deleteContact:(CNContact *)contact
-      completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+      completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Add given group to contacts list
@@ -118,7 +118,7 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)addGroup:(CNMutableGroup *)group
- completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+ completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Delete given group
@@ -126,7 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)deleteGroup:(CNMutableGroup *)group
-    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+    completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Update given group
@@ -134,7 +134,7 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)updateGroup:(CNMutableGroup *)group
-    completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+    completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Add given member to given group
@@ -145,7 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)addGroupMember:(CNContact *)contact
                  group:(CNGroup *)group
-       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+       completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Get groups

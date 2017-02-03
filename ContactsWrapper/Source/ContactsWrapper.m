@@ -65,7 +65,7 @@
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
             completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError  *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             [self fetchContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
@@ -101,9 +101,9 @@
 }
 
 - (void)saveContact:(CNMutableContact *)contact
-    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+    completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *saveRequest = [CNSaveRequest new];
@@ -153,7 +153,7 @@
 - (void)fetchContactsWithGivenName:(NSString *)givenName
                    completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             NSPredicate *predicate = [CNContact predicateForContactsMatchingName:givenName];
@@ -176,9 +176,9 @@
 }
 
 - (void)updateContact:(CNMutableContact *)contact
-      completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+      completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *saveRequest = [CNSaveRequest new];
@@ -204,7 +204,7 @@
 - (void)getContactsWithEmailAddress:(NSString *)emailAddress
                     completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             NSPredicate *predicate = [CNContact predicateForContactsMatchingName:emailAddress];
@@ -227,9 +227,9 @@
 }
 
 - (void)deleteContact:(CNContact *)contact
-      completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+      completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *deleteRequest = [CNSaveRequest new];
@@ -254,9 +254,9 @@
 }
 
 - (void)addGroup:(CNMutableGroup *)group
- completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+ completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *addRequest = [CNSaveRequest new];
@@ -280,9 +280,9 @@
 }
 
 - (void)deleteGroup:(CNMutableGroup *)group
-    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+    completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *deleteRequest = [CNSaveRequest new];
@@ -307,9 +307,9 @@
 }
 
 - (void)updateGroup:(CNMutableGroup *)group
-    completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+    completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *saveRequest = [CNSaveRequest new];
@@ -334,9 +334,9 @@
 
 - (void)addGroupMember:(CNContact *)contact
                  group:(CNGroup *)group
-       completionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+       completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *addMemberRequest = [CNSaveRequest new];
@@ -361,7 +361,7 @@
 
 - (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> *groups, NSError *error))completionBlock
 {
-    [self getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             NSString *containerId = self.contactStore.defaultContainerIdentifier;
@@ -384,7 +384,7 @@
     }];
 }
 
-- (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock
+- (void)getAuthorizationWithCompletionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)
     {

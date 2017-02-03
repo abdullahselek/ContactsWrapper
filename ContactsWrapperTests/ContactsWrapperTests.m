@@ -49,7 +49,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
 - (void)fetchContactsWithStore:(CNContactStore *)store
                            key:(NSArray<id<CNKeyDescriptor>> *)keys
                completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock;
-- (void)getAuthorizationWithCompletionBlock:(void (^)(bool isSuccess, NSError *error))completionBlock;
+- (void)getAuthorizationWithCompletionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock;
 
 @end
 
@@ -107,7 +107,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 self.contact.familyName = CWContactFamilyName;
                 CNLabeledValue *email = [[CNLabeledValue alloc] initWithLabel:CNLabelEmailiCloud value:CWContactEmailAddress];
                 self.contact.emailAddresses = @[email];
-                [[ContactsWrapper sharedInstance] saveContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] saveContact:self.contact completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -129,7 +129,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
         context(@"Update contact success", ^ {
             it(@"Should return success", ^ {
                 self.contact.familyName = CWContactUpdateFamilyName;
-                [[ContactsWrapper sharedInstance] updateContact:self.contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] updateContact:self.contact completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -147,12 +147,12 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 contact = [CNMutableContact new];
                 contact.givenName = CWContactGivenNameDelete;
                 contact.familyName = CWContactFamilyNameDelete;
-                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
             it(@"Should delete given contact", ^ {
-                [[ContactsWrapper sharedInstance] deleteContact:contact completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] deleteContact:contact completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -162,7 +162,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
                 OCMStub([(id) mockContactStore authorizationStatusForEntityType:
                          CNEntityTypeContacts]).andReturn(CNAuthorizationStatusAuthorized);
-                [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+                [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
                     expect(isSuccess).beTruthy();
                 }];
                 OCMStub([(id) mockContactStore stopMocking]);
@@ -173,7 +173,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 CNContactStore *mockContactStore = OCMClassMock([CNContactStore class]);
                 OCMStub([(id) mockContactStore authorizationStatusForEntityType:
                          CNEntityTypeContacts]).andReturn(CNAuthorizationStatusDenied);
-                [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(bool isSuccess, NSError *error) {
+                [[ContactsWrapper sharedInstance] getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
                     expect(isSuccess).beTruthy();
                 }];
                 OCMStub([(id) mockContactStore stopMocking]);
@@ -185,7 +185,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 self.group.name = CWContactGroupName;
             });
             it(@"Should be success", ^ {
-                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nonnull error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -194,7 +194,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             it(@"Member should be added", ^ {
                 [[ContactsWrapper sharedInstance] addGroupMember:self.contact
                                                            group:self.group
-                                                 completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                                                 completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -213,7 +213,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             });
             it(@"Should be succeed", ^ {
                 [[ContactsWrapper sharedInstance] deleteGroup:self.group
-                                              completionBlock:^(bool isSuccess, NSError * _Nonnull error) {
+                                              completionBlock:^(BOOL isSuccess, NSError * _Nonnull error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -222,7 +222,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             beforeEach(^ {
                 self.group = [CNMutableGroup new];
                 self.group.name = CWContactGroupName;
-                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     if (error) {
                         failure(@"Update group not ready");
                     }
@@ -230,7 +230,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             });
             it(@"Should be succeed", ^{
                 self.group.name = @"UpdatedGroup";
-                [[ContactsWrapper sharedInstance] updateGroup:self.group completionBlock:^(bool isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] updateGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
