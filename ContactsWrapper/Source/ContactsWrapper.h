@@ -137,13 +137,24 @@ NS_ASSUME_NONNULL_BEGIN
     completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
-  * Add given member to given group
+  * Add given contact to given group
   *
   * @param contact Contact will be added to group
   * @param group Group which contact will be added in
   * @param completionBlock isSuccess and error
  */
 - (void)addGroupMember:(CNContact *)contact
+                 group:(CNGroup *)group
+       completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
+
+/**
+  * Add given contacts to given group
+  *
+  * @param contacts Contacts will be added to group
+  * @param group Group which contact will be added in
+  * @param completionBlock isSuccess and error
+ */
+- (void)addGroupMembers:(NSArray<CNMutableContact *> *)contacts
                  group:(CNGroup *)group
        completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 

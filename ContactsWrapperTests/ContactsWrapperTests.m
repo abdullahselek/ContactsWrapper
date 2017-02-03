@@ -235,6 +235,28 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
+        context(@"", ^{
+            beforeEach(^ {
+                self.group = [CNMutableGroup new];
+                self.group.name = CWContactGroupName;
+                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
+                    if (error) {
+                        failure(@"Update group not ready");
+                    }
+                }];
+            });
+            it(@"", ^{
+                CNMutableContact *contact1 = [CNMutableContact new];
+                contact1.givenName = @"contact";
+                contact1.familyName = @"1";
+                CNMutableContact *contact2 = [CNMutableContact new];
+                contact1.givenName = @"contact";
+                contact1.familyName = @"2";
+                [[ContactsWrapper sharedInstance] addGroupMembers:@[contact1, contact2] group:self.group completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
+                    expect(isSuccess).beTruthy();
+                }];
+            });
+        });
     });
 }
 

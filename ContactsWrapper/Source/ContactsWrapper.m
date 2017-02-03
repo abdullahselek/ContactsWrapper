@@ -359,6 +359,35 @@
     }];
 }
 
+- (void)addGroupMembers:(NSArray<CNMutableContact *> *)contacts
+                  group:(CNGroup *)group
+        completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            CNSaveRequest *addMemberRequest = [CNSaveRequest new];
+            for (CNMutableContact *contact in contacts) {
+                [addMemberRequest addContact:contact toContainerWithIdentifier:nil];
+            }
+            NSError *addMemberError;
+            [self.contactStore executeSaveRequest:addMemberRequest error:&addMemberError];
+            if (addMemberError)
+            {
+                BLOCK_EXEC(completionBlock, NO, addMemberError);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, YES, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, NO, error);
+        }
+    }];
+}
+
 - (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> *groups, NSError *error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
