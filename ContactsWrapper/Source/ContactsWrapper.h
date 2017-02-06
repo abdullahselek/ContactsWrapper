@@ -164,8 +164,8 @@ NS_ASSUME_NONNULL_BEGIN
   * @param completionBlock isSuccess and error
  */
 - (void)addGroupMembers:(NSArray<CNMutableContact *> *)contacts
-                 group:(CNGroup *)group
-       completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
+                  group:(CNGroup *)group
+        completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
   * Get groups

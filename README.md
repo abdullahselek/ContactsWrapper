@@ -116,6 +116,13 @@ add "Privacy - Contacts Usage Description" to your application .plist file
        completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
+### Add given contacts to given group
+```
+- (void)addGroupMembers:(NSArray<CNMutableContact *> *)contacts
+                  group:(CNGroup *)group
+        completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock
+```
+
 ### Fething groups
 ```
 - (void)getGroupsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
