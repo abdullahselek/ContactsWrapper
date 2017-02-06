@@ -413,6 +413,28 @@
     }];
 }
 
+- (void)getContainers:(void (^)(NSArray<CNContainer *> * _Nullable groups, NSError * _Nullable error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
+        if (isSuccess) {
+            NSError *containersError;
+            NSArray<CNContainer *> *containers = [self.contactStore containersMatchingPredicate:nil error:&containersError];
+            if (containersError)
+            {
+                BLOCK_EXEC(completionBlock, nil, containersError);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, containers, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, nil, error);
+        }
+    }];
+}
+
 - (void)getAuthorizationWithCompletionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
     if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized)

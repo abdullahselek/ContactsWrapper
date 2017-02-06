@@ -165,6 +165,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock;
 
+/**
+  * Get containers
+  *
+  * @param completionBlock Nullable container and error
+ */
+- (void)getContainers:(void (^)(NSArray<CNContainer *> * _Nullable groups, NSError * _Nullable error))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
