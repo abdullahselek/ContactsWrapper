@@ -190,7 +190,8 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 self.group.name = CWContactGroupName;
             });
             it(@"Should be success", ^ {
-                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nonnull error) {
+                [[ContactsWrapper sharedInstance] addGroup:self.group containerId:nil completionBlock:^(BOOL isSuccess, NSError * _Nonnull error) {
+                    expect(error).to.beNil();
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -227,7 +228,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             beforeEach(^ {
                 self.group = [CNMutableGroup new];
                 self.group.name = CWContactGroupName;
-                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] addGroup:self.group containerId:nil completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     if (error) {
                         failure(@"Update group not ready");
                     }
@@ -244,7 +245,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
             beforeEach(^ {
                 self.group = [CNMutableGroup new];
                 self.group.name = CWContactGroupName;
-                [[ContactsWrapper sharedInstance] addGroup:self.group completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] addGroup:self.group containerId:nil completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     if (error) {
                         failure(@"Update group not ready");
                     }

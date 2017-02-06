@@ -261,13 +261,14 @@
 }
 
 - (void)addGroup:(CNMutableGroup *)group
+     containerId:(NSString *)containerId
  completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *addRequest = [CNSaveRequest new];
-            [addRequest addGroup:group toContainerWithIdentifier:self.contactStore.defaultContainerIdentifier];
+            [addRequest addGroup:group toContainerWithIdentifier:containerId == nil ? self.contactStore.defaultContainerIdentifier: containerId];
             NSError *groupError;
             [self.contactStore executeSaveRequest:addRequest error:&groupError];
             if (groupError)

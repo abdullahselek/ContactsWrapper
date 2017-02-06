@@ -121,9 +121,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
   * Add given group to contacts list
   *
+  * @param group Group to add
+  * @param containerId Container id
   * @param completionBlock isSuccess and error
  */
 - (void)addGroup:(CNMutableGroup *)group
+     containerId:(nullable NSString *)containerId
  completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
 
 /**
