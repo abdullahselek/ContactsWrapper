@@ -22,7 +22,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-	pod 'ContactsWrapper', '1.0.1'
+	pod 'ContactsWrapper', '1.0.2'
 end
 ```
 Then, run the following command:
@@ -43,7 +43,7 @@ brew install carthage
 To integrate ContactsWrapper into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "abdullahselek/ContactsWrapper" ~> 1.0.1
+github "abdullahselek/ContactsWrapper" ~> 1.0.2
 ```
 
 Run carthage update to build the framework and drag the built ContactsWrapper.framework into your Xcode project.
@@ -55,18 +55,21 @@ add "Privacy - Contacts Usage Description" to your application .plist file
 ## Available methods
 ### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
 ```
-- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
+- (void)getContactsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 ```
 	
 ### Get all contacts with given key descriptors
 ```
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys 
+				containerId:(nullable NSString *)containerId
 			completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
 ```
 
 ### Saves given contact
 ```
-- (void)saveContact:(CNMutableContact *)contact completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
+- (void)saveContact:(CNMutableContact *)contact
+		containerId:(nullable NSString *)containerId
+	completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
 ### Get contacts with given name
@@ -102,6 +105,7 @@ add "Privacy - Contacts Usage Description" to your application .plist file
 ### Add given group to contacts list
 ```
 - (void)addGroup:(CNMutableGroup *)group
+	 containerId:(nullable NSString *)containerId
  completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
@@ -114,7 +118,7 @@ add "Privacy - Contacts Usage Description" to your application .plist file
 
 ### Fething groups
 ```
-- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
+- (void)getGroupsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
 ```
 
 ###  Delete group
@@ -127,6 +131,11 @@ add "Privacy - Contacts Usage Description" to your application .plist file
 ```
 - (void)updateGroup:(CNMutableGroup *)group
     completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
+```
+
+### Fetching containers
+```
+- (void)getContainers:(void (^)(NSArray<CNContainer *> * _Nullable containers, NSError * _Nullable error))completionBlock
 ```
 
 ## License
