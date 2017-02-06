@@ -46,17 +46,20 @@ NS_ASSUME_NONNULL_BEGIN
 /**
   * Get All Contacts with their Family Name, Given Name, Phone Numbers, Image Data
   *
+  * @param containerId Container id
   * @param completionBlock Nullable contacts and error
  */
-- (void)getContacts:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
+- (void)getContactsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 
 /**
   * Get All Contacts with given keys
   *
   * @param keys Keys for filling contact data
+  * @param containerId Container id
   * @param completionBlock Nullable contacts and error
  */
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
+                containerId:(nullable NSString *)containerId
             completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 
 /**

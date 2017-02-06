@@ -57,18 +57,24 @@
     return self;
 }
 
-- (void)getContacts:(void (^)(NSArray<CNContact *> *contacts, NSError  *error))completionBlock;
+- (void)getContactsWithContainerId:(NSString *)containerId completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 {
-    [self getContactsWithKeys:@[] completionBlock:completionBlock];
+    [self getContactsWithKeys:@[]
+                  containerId:containerId
+              completionBlock:completionBlock];
 }
 
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys
+                containerId:(NSString *)containerId
             completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError  *error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
-            [self fetchContactsWithStore:self.contactStore key:keys completionBlock:completionBlock];
+            [self fetchContactsWithStore:self.contactStore
+                                     key:keys
+                             containerId:containerId
+                         completionBlock:completionBlock];
         }
         else
         {
@@ -79,6 +85,7 @@
 
 - (void)fetchContactsWithStore:(CNContactStore *)store
                            key:(NSArray<id<CNKeyDescriptor>> *)keys
+                   containerId:(NSString *)containerId
                completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock
 
 {
@@ -86,8 +93,7 @@
     {
         keys = @[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey];
     }
-    NSString *containerId = store.defaultContainerIdentifier;
-    NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId];
+    NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId == nil ? store.defaultContainerIdentifier : containerId];
     NSError *contactError;
     NSArray<CNContact *> *contacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:keys error:&contactError];
     if (contactError)

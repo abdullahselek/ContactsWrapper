@@ -48,6 +48,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
 
 - (void)fetchContactsWithStore:(CNContactStore *)store
                            key:(NSArray<id<CNKeyDescriptor>> *)keys
+                   containerId:(NSString *)containerId
                completionBlock:(void (^)(NSArray<CNContact *> *contacts, NSError *error))completionBlock;
 - (void)getAuthorizationWithCompletionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock;
 
@@ -80,14 +81,16 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
         });
         context(@"Check Get Contacts", ^ {
             it(@"Return any valid contact", ^ {
-                [[ContactsWrapper sharedInstance] getContacts:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithContainerId:nil completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                    expect(error).to.beNil();
                     expect(contacts).notTo.beNil();
                 }];
             });
         });
         context(@"Check Get Contacts with keys", ^ {
             it(@"Return any valid contact", ^ {
-                [[ContactsWrapper sharedInstance] getContactsWithKeys:@[] completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] getContactsWithKeys:@[] containerId:nil completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+                    expect(error).to.beNil();
                     expect(contacts).notTo.beNil();
                 }];
             });
@@ -95,7 +98,8 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
         context(@"Check Fetch Contacts with store and key", ^ {
             it(@"Return any valid contact", ^ {
                 CNContactStore *contactStore = [ContactsWrapper sharedInstance].contactStore;
-                [[ContactsWrapper sharedInstance] fetchContactsWithStore:contactStore key:@[] completionBlock:^(NSArray<CNContact *> *contacts, NSError *error) {
+                [[ContactsWrapper sharedInstance] fetchContactsWithStore:contactStore key:@[] containerId:nil completionBlock:^(NSArray<CNContact *> *contacts, NSError *error) {
+                    expect(error).to.beNil();
                     expect(contacts).notTo.beNil();
                 }];
             });

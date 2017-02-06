@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[ContactsWrapper sharedInstance] getContacts:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
+    [[ContactsWrapper sharedInstance] getContactsWithContainerId:nil completionBlock:^(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error) {
         if (contacts)
         {
             self.contacts = [NSMutableArray arrayWithArray:contacts];
