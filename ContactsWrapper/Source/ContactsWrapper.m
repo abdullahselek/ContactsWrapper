@@ -396,13 +396,12 @@
     }];
 }
 
-- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> *groups, NSError *error))completionBlock
+- (void)getGroupsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
-            NSString *containerId = self.contactStore.defaultContainerIdentifier;
-            NSPredicate *predicate = [CNGroup predicateForGroupsInContainerWithIdentifier:containerId];
+            NSPredicate *predicate = [CNGroup predicateForGroupsInContainerWithIdentifier:containerId == nil ? self.contactStore.defaultContainerIdentifier : containerId];
             NSError *groupsError;
             NSArray<CNGroup*> *groups = [self.contactStore groupsMatchingPredicate:predicate error:&groupsError];
             if (groupsError)

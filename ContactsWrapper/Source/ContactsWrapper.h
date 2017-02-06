@@ -170,9 +170,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
   * Get groups
   *
+  * @param containerId Container id
   * @param completionBlock Nullable groups and error
  */
-- (void)getGroupsWithCompletionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock;
+- (void)getGroupsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock;
 
 /**
   * Get containers
