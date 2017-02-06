@@ -107,13 +107,14 @@
 }
 
 - (void)saveContact:(CNMutableContact *)contact
+        containerId:(NSString *)containerId
     completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
             CNSaveRequest *saveRequest = [CNSaveRequest new];
-            [saveRequest addContact:contact toContainerWithIdentifier:self.contactStore.defaultContainerIdentifier];
+            [saveRequest addContact:contact toContainerWithIdentifier:containerId == nil ? self.contactStore.defaultContainerIdentifier : containerId];
             NSError *saveContactError;
             [self.contactStore executeSaveRequest:saveRequest error:&saveContactError];
             if (saveContactError)

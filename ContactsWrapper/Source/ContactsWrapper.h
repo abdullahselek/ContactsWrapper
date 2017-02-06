@@ -65,10 +65,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**
   * Save given contact
   *
+  * @param contact Contact object to save
+  * @param containerId Container id
   * @param completionBlock isSuccess and error
  */
 - (void)saveContact:(CNMutableContact *)contact
-    completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock;
+        containerId:(nullable NSString *)containerId
+    completionBlock:(void (^)(BOOL isSuccess, NSError *error))completionBlock;
 
 /**
   * Get Contacts with given name

@@ -111,7 +111,8 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 self.contact.familyName = CWContactFamilyName;
                 CNLabeledValue *email = [[CNLabeledValue alloc] initWithLabel:CNLabelEmailiCloud value:CWContactEmailAddress];
                 self.contact.emailAddresses = @[email];
-                [[ContactsWrapper sharedInstance] saveContact:self.contact completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] saveContact:self.contact containerId:nil completionBlock:^(BOOL isSuccess, NSError * _Nonnull error) {
+                    expect(error).to.beNil();
                     expect(isSuccess).beTruthy();
                 }];
             });
@@ -151,7 +152,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 contact = [CNMutableContact new];
                 contact.givenName = CWContactGivenNameDelete;
                 contact.familyName = CWContactFamilyNameDelete;
-                [[ContactsWrapper sharedInstance] saveContact:contact completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
+                [[ContactsWrapper sharedInstance] saveContact:contact containerId:nil completionBlock:^(BOOL isSuccess, NSError * _Nullable error) {
                     expect(isSuccess).beTruthy();
                 }];
             });
