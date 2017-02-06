@@ -235,7 +235,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
-        context(@"", ^{
+        context(@"Check add group members", ^{
             beforeEach(^ {
                 self.group = [CNMutableGroup new];
                 self.group.name = CWContactGroupName;
@@ -245,7 +245,7 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                     }
                 }];
             });
-            it(@"", ^{
+            it(@"Should add given members to group", ^{
                 CNMutableContact *contact1 = [CNMutableContact new];
                 contact1.givenName = @"contact";
                 contact1.familyName = @"1";
