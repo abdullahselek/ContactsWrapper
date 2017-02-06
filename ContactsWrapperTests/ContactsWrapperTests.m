@@ -257,6 +257,15 @@ static NSString *const CWContactGroupName = @"TEST_GROUP";
                 }];
             });
         });
+        context(@"Check get containers", ^{
+            it(@"Shold return containers", ^{
+                [[ContactsWrapper sharedInstance] getContainers:^(NSArray<CNContainer *> * _Nullable containers, NSError * _Nullable error) {
+                    expect(error).to.beNil();
+                    expect(containers).notTo.beNil();
+                    expect(containers).to.haveCount(1);
+                }];
+            });
+        });
     });
 }
 

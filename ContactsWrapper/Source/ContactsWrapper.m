@@ -413,7 +413,7 @@
     }];
 }
 
-- (void)getContainers:(void (^)(NSArray<CNContainer *> * _Nullable groups, NSError * _Nullable error))completionBlock
+- (void)getContainers:(void (^)(NSArray<CNContainer *> * _Nullable containers, NSError * _Nullable error))completionBlock
 {
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess) {
