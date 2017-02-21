@@ -53,94 +53,95 @@ Run carthage update to build the framework and drag the built ContactsWrapper.fr
 add "Privacy - Contacts Usage Description" to your application .plist file
 ```
 ## Available methods
-### Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
+
+- Get all contacts if available with CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey descriptors
 ```
 - (void)getContactsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock;
 ```
 	
-### Get all contacts with given key descriptors
+- Get all contacts with given key descriptors
 ```
 - (void)getContactsWithKeys:(NSArray<id<CNKeyDescriptor>> *)keys 
 				containerId:(nullable NSString *)containerId
 			completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError  * _Nullable error))completionBlock
 ```
 
-### Saves given contact
+- Saves given contact
 ```
 - (void)saveContact:(CNMutableContact *)contact
 		containerId:(nullable NSString *)containerId
 	completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
-### Get contacts with given name
+- Get contacts with given name
 ```
 - (void)getContactsWithGivenName:(NSString *)givenName
                  completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 ```
 
-### Get contacts with given and family name
+- Get contacts with given and family name
 ```
 - (void)getContactsWithGivenName:(NSString *)givenName 
 					  familyName:(NSString *)familyName 
 			     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 ```
 
-### Updates given contact
+- Updates given contact
 ```
 - (void)updateContact:(CNMutableContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
-### Get contacts with given email address
+- Get contacts with given email address
 ```
 - (void)getContactsWithEmailAddress:(NSString *)emailAddress
                     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
 ```
-### Delete given contact
+- Delete given contact
 ```
 - (void)deleteContact:(CNMutableContact *)contact
       completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```      
 
-### Add given group to contacts list
+- Add given group to contacts list
 ```
 - (void)addGroup:(CNMutableGroup *)group
 	 containerId:(nullable NSString *)containerId
  completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
-### Add given member to given group
+- Add given member to given group
 ```
 - (void)addGroupMember:(CNContact *)contact
                  group:(CNGroup *)group
        completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock
 ```
 
-### Add given contacts to given group
+- Add given contacts to given group
 ```
 - (void)addGroupMembers:(NSArray<CNMutableContact *> *)contacts
                   group:(CNGroup *)group
         completionBlock:(void (^)(BOOL isSuccess, NSError * _Nullable error))completionBlock
 ```
 
-### Fething groups
+- Fething groups
 ```
 - (void)getGroupsWithContainerId:(nullable NSString *)containerId completionBlock:(void (^)(NSArray<CNGroup *> * _Nullable groups, NSError * _Nullable error))completionBlock
 ```
 
-###  Delete group
+- Delete group
 ```
 - (void)deleteGroup:(CNMutableGroup *)group
     completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 ```
 
-### Update group
+- Update group
 ```
 - (void)updateGroup:(CNMutableGroup *)group
     completionBlock:(void (^)(bool isSuccess, NSError * _Nullable error))completionBlock;
 ```
 
-### Fetching containers
+- Fetching containers
 ```
 - (void)getContainers:(void (^)(NSArray<CNContainer *> * _Nullable containers, NSError * _Nullable error))completionBlock
 ```
