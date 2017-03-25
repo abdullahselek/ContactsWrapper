@@ -2,6 +2,8 @@
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ContactsWrapper.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/abdullahselek/ContactsWrapper/badge.svg?branch=master)](https://coveralls.io/github/abdullahselek/ContactsWrapper?branch=master)
+![Platform](https://img.shields.io/cocoapods/p/ContactsWrapper.svg?style=flat)
+![License](https://img.shields.io/dub/l/vibe-d.svg)
 
 # ContactsWrapper
 Contacts wrapper for iOS 9 or upper with Objective-C
