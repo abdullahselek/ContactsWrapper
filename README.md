@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/dub/l/vibe-d.svg)
 
 # ContactsWrapper
-Contacts wrapper for iOS 9 or upper with Objective-C
+Contacts wrapper for iOS 9 or upper with Objective-C. For the information translated to Russian, take a look at this [link](http://gargo.of.by/contactswrapper/).
 
 ## Requirements
 iOS 9.0+
