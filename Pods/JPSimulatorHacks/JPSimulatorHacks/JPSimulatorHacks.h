@@ -26,6 +26,13 @@
 
 #import <Foundation/Foundation.h>
 
+//! Project version number for JPSimulatorHacks.
+FOUNDATION_EXPORT double JPSimulatorHacksVersionNumber;
+
+//! Project version string for JPSimulatorHacks.
+FOUNDATION_EXPORT const unsigned char JPSimulatorHacksVersionString[];
+
+
 @class ALAsset;
 
 @interface JPSimulatorHacks : NSObject
@@ -51,6 +58,18 @@
 
 + (BOOL)grantAccessToContacts;
 + (BOOL)grantAccessToContactsForBundleIdentifier:(NSString *)bundleIdentifier;
+
++ (BOOL)grantAccessToCamera;
++ (BOOL)grantAccessToCameraForBundleIdentifier:(NSString *)bundleIdentifier;
+
++ (BOOL)grantAccessToMicrophone;
++ (BOOL)grantAccessToMicrophoneForBundleIdentifier:(NSString *)bundleIdentifier;
+
++ (BOOL)grantAccessToReminders;
++ (BOOL)grantAccessToRemindersForBundleIdentifier:(NSString *)bundleIdentifier;
+
++ (BOOL)grantAccessToTwitter;
++ (BOOL)grantAccessToTwitterForBundleIdentifier:(NSString *)bundleIdentifier;
 
 + (void)setTimeout:(NSTimeInterval)timeout;
 
