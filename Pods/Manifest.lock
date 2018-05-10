@@ -4,7 +4,7 @@ PODS:
     - JPSimulatorHacks/standard (= 1.4.2)
   - JPSimulatorHacks/standard (1.4.2)
   - OCMock (3.4.1)
-  - Quick (1.2.0)
+  - Quick (1.3.0)
 
 DEPENDENCIES:
   - Expecta
@@ -12,12 +12,19 @@ DEPENDENCIES:
   - OCMock (~> 3.3)
   - Quick
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Expecta
+    - JPSimulatorHacks
+    - OCMock
+    - Quick
+
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   JPSimulatorHacks: 28428b30259eb93ad558ac3f2c608acd2133a14b
   OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
 PODFILE CHECKSUM: edbea2c31a9e60031c121919250f105d1c5174ef
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.0
