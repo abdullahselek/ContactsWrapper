@@ -214,7 +214,33 @@
     [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
         if (isSuccess)
         {
-            NSPredicate *predicate = [CNContact predicateForContactsMatchingName:emailAddress];
+            NSPredicate *predicate = [CNContact predicateForContactsMatchingEmailAddress:emailAddress];
+            NSError *error;
+            NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactEmailAddressesKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
+            if (error)
+            {
+                BLOCK_EXEC(completionBlock, nil, error);
+            }
+            else
+            {
+                BLOCK_EXEC(completionBlock, contacts, nil);
+            }
+        }
+        else
+        {
+            BLOCK_EXEC(completionBlock, nil, error);
+        }
+    }];
+}
+
+- (void)getContactsWithPhoneNumber:(NSString *)phoneNumber
+                   completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock
+{
+    [self getAuthorizationWithCompletionBlock:^(BOOL isSuccess, NSError *error) {
+        if (isSuccess)
+        {
+            CNPhoneNumber* cnPhoneNumber = [CNPhoneNumber phoneNumberWithStringValue:phoneNumber];
+            NSPredicate *predicate = [CNContact predicateForContactsMatchingPhoneNumber:cnPhoneNumber];
             NSError *error;
             NSArray<CNContact *> *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] error:&error];
             if (error)

@@ -111,6 +111,15 @@ NS_ASSUME_NONNULL_BEGIN
                     completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
 
 /**
+ * Get contacts with given phone number
+ *
+ * @param phoneNumber Phone number
+ * @param completionBlock Nullable contacts and error
+ */
+- (void)getContactsWithPhoneNumber:(NSString *)phoneNumber
+                    completionBlock:(void (^)(NSArray<CNContact *> * _Nullable contacts, NSError * _Nullable error))completionBlock;
+
+/**
   * Delete given contact
   *
   * @param completionBlock isSuccess and error
